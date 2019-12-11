@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="76ca28d3cccf4ec2a45e660315b87aeb" Name="Diagram1">
+        <EntityTypeShape EntityType="BankModel.Client" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankModel.Operacii" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankModel.Prog" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankModel.Schet" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankModel.Sotrudnic" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankModel.Status" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankModel.Tip" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankModel.Tip_operacii" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankModel.Valute" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <AssociationConnector Association="BankModel.FK_Schet_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="BankModel.FK_Operacii_Schet" ManuallyRouted="false" />
+        <AssociationConnector Association="BankModel.FK_Operacii_Schet1" ManuallyRouted="false" />
+        <AssociationConnector Association="BankModel.FK_Operacii_Sotrudnic" ManuallyRouted="false" />
+        <AssociationConnector Association="BankModel.FK_Operacii_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="BankModel.FK_Operacii_Tip_operacii" ManuallyRouted="false" />
+        <AssociationConnector Association="BankModel.FK_Prog_Tip" ManuallyRouted="false" />
+        <AssociationConnector Association="BankModel.FK_Schet_Prog" ManuallyRouted="false" />
+        <AssociationConnector Association="BankModel.FK_Schet_Valute" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

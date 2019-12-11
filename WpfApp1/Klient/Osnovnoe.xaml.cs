@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1;
+using WpfApp1.Model;
 
 namespace WpfApp1
 {
@@ -19,9 +21,18 @@ namespace WpfApp1
     /// </summary>
     public partial class Osnovnoe : Window
     {
-        public Osnovnoe()
+        Controler bd;
+        int Client_ID;
+        public Osnovnoe(string login)
         {
             InitializeComponent();
+            Client_ID = 1;
+            DataContext =new Controler(Client_ID);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

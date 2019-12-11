@@ -28,7 +28,7 @@ namespace WpfApp1
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Sotrudnic f = new Sotrudnic();
-            Osnovnoe f1 = new Osnovnoe();
+            Osnovnoe f1 = new Osnovnoe(login.Text);
             f.Show();
             f1.Show();
         }

@@ -9,7 +9,7 @@
     <Grid >
 
         <Label  Content="Логин"   HorizontalAlignment="Center" VerticalAlignment="Center" Margin="56,10,56,129" Height="30" Width="80"/>
-        <TextBox   HorizontalAlignment="Center" VerticalAlignment="Center"  Height="30" Width="80" Margin="56,40,56,99"/>
+        <TextBox Name="login"  HorizontalAlignment="Center" VerticalAlignment="Center"  Height="30" Width="80" Margin="56,40,56,99"/>
         <Label  Content="Пароль"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="80" Margin="56,75,56,64"/>
         <TextBox  HorizontalAlignment="Center" VerticalAlignment="Center"  Height="30" Width="80" Margin="56,105,56,34" />
         <Button Content="Войти" HorizontalAlignment="Center" Margin="56,139,56,10" VerticalAlignment="Center" Width="80" Click="Button_Click"/>

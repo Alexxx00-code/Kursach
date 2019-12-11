@@ -1,0 +1,682 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище BankModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Npasporta" Type="int" Nullable="false" />
+          <Property Name="Serpasporta" Type="int" Nullable="false" />
+          <Property Name="Data_rog" Type="date" Nullable="false" />
+          <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pasworld" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Operacii">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sum_In" Type="money" />
+          <Property Name="Out_FK" Type="int" />
+          <Property Name="In_FK" Type="int" />
+          <Property Name="Vneshcniy_Nscheta" Type="int" />
+          <Property Name="Tip_operazii_FK" Type="int" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Sotrudnic_FK" Type="int" />
+          <Property Name="Status_FK" Type="int" Nullable="false" />
+          <Property Name="Sum_Out" Type="money" />
+        </EntityType>
+        <EntityType Name="Prog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Procent" Type="float" Nullable="false" />
+          <Property Name="Tip_FK" Type="int" Nullable="false" />
+          <Property Name="dlitel_day_min" Type="int" Nullable="false" />
+          <Property Name="dlitel_day_max" Type="int" Nullable="false" />
+          <Property Name="min_Sum" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Schet">
+          <Key>
+            <PropertyRef Name="Nschet" />
+          </Key>
+          <Property Name="Nschet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data_sozd" Type="datetime" Nullable="false" />
+          <Property Name="Sum" Type="money" />
+          <Property Name="Prog_FK" Type="int" />
+          <Property Name="Valute_FK" Type="int" Nullable="false" />
+          <Property Name="Client_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sotrudnic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dolgnost" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Paswoorld" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tip">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tip_operacii">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Valute">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Otnoshenie_k_rub_prod" Type="float" Nullable="false" />
+          <Property Name="Otnoshenie_k_rub_pok" Type="float" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Operacii_Schet">
+          <End Role="Schet" Type="Self.Schet" Multiplicity="0..1" />
+          <End Role="Operacii" Type="Self.Operacii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schet">
+              <PropertyRef Name="Nschet" />
+            </Principal>
+            <Dependent Role="Operacii">
+              <PropertyRef Name="In_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operacii_Schet1">
+          <End Role="Schet" Type="Self.Schet" Multiplicity="0..1" />
+          <End Role="Operacii" Type="Self.Operacii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schet">
+              <PropertyRef Name="Nschet" />
+            </Principal>
+            <Dependent Role="Operacii">
+              <PropertyRef Name="Out_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operacii_Sotrudnic">
+          <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="0..1" />
+          <End Role="Operacii" Type="Self.Operacii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudnic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Operacii">
+              <PropertyRef Name="Sotrudnic_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operacii_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Operacii" Type="Self.Operacii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Operacii">
+              <PropertyRef Name="Status_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operacii_Tip_operacii">
+          <End Role="Tip_operacii" Type="Self.Tip_operacii" Multiplicity="0..1" />
+          <End Role="Operacii" Type="Self.Operacii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_operacii">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Operacii">
+              <PropertyRef Name="Tip_operazii_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prog_Tip">
+          <End Role="Tip" Type="Self.Tip" Multiplicity="1" />
+          <End Role="Prog" Type="Self.Prog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Prog">
+              <PropertyRef Name="Tip_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schet_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Schet" Type="Self.Schet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Schet">
+              <PropertyRef Name="Client_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schet_Prog">
+          <End Role="Prog" Type="Self.Prog" Multiplicity="0..1" />
+          <End Role="Schet" Type="Self.Schet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prog">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Schet">
+              <PropertyRef Name="Prog_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schet_Valute">
+          <End Role="Valute" Type="Self.Valute" Multiplicity="1" />
+          <End Role="Schet" Type="Self.Schet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Valute">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Schet">
+              <PropertyRef Name="Valute_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище BankModelContainer">
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Operacii" EntityType="Self.Operacii" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prog" EntityType="Self.Prog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schet" EntityType="Self.Schet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sotrudnic" EntityType="Self.Sotrudnic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tip" EntityType="Self.Tip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tip_operacii" EntityType="Self.Tip_operacii" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Valute" EntityType="Self.Valute" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Operacii_Schet" Association="Self.FK_Operacii_Schet">
+            <End Role="Schet" EntitySet="Schet" />
+            <End Role="Operacii" EntitySet="Operacii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operacii_Schet1" Association="Self.FK_Operacii_Schet1">
+            <End Role="Schet" EntitySet="Schet" />
+            <End Role="Operacii" EntitySet="Operacii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operacii_Sotrudnic" Association="Self.FK_Operacii_Sotrudnic">
+            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
+            <End Role="Operacii" EntitySet="Operacii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operacii_Status" Association="Self.FK_Operacii_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Operacii" EntitySet="Operacii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operacii_Tip_operacii" Association="Self.FK_Operacii_Tip_operacii">
+            <End Role="Tip_operacii" EntitySet="Tip_operacii" />
+            <End Role="Operacii" EntitySet="Operacii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prog_Tip" Association="Self.FK_Prog_Tip">
+            <End Role="Tip" EntitySet="Tip" />
+            <End Role="Prog" EntitySet="Prog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schet_Client" Association="Self.FK_Schet_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Schet" EntitySet="Schet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schet_Prog" Association="Self.FK_Schet_Prog">
+            <End Role="Prog" EntitySet="Prog" />
+            <End Role="Schet" EntitySet="Schet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schet_Valute" Association="Self.FK_Schet_Valute">
+            <End Role="Valute" EntitySet="Valute" />
+            <End Role="Schet" EntitySet="Schet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BankModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Npasporta" Type="Int32" Nullable="false" />
+          <Property Name="Serpasporta" Type="Int32" Nullable="false" />
+          <Property Name="Data_rog" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pasworld" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Schet" Relationship="Self.FK_Schet_Client" FromRole="Client" ToRole="Schet" />
+        </EntityType>
+        <EntityType Name="Operacii">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sum_In" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Out_FK" Type="Int32" />
+          <Property Name="In_FK" Type="Int32" />
+          <Property Name="Vneshcniy_Nscheta" Type="Int32" />
+          <Property Name="Tip_operazii_FK" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Sotrudnic_FK" Type="Int32" />
+          <Property Name="Status_FK" Type="Int32" Nullable="false" />
+          <Property Name="Sum_Out" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Schet" Relationship="Self.FK_Operacii_Schet" FromRole="Operacii" ToRole="Schet" />
+          <NavigationProperty Name="Schet1" Relationship="Self.FK_Operacii_Schet1" FromRole="Operacii" ToRole="Schet" />
+          <NavigationProperty Name="Sotrudnic" Relationship="Self.FK_Operacii_Sotrudnic" FromRole="Operacii" ToRole="Sotrudnic" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Operacii_Status" FromRole="Operacii" ToRole="Status" />
+          <NavigationProperty Name="Tip_operacii" Relationship="Self.FK_Operacii_Tip_operacii" FromRole="Operacii" ToRole="Tip_operacii" />
+        </EntityType>
+        <EntityType Name="Prog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Procent" Type="Double" Nullable="false" />
+          <Property Name="Tip_FK" Type="Int32" Nullable="false" />
+          <Property Name="dlitel_day_min" Type="Int32" Nullable="false" />
+          <Property Name="dlitel_day_max" Type="Int32" Nullable="false" />
+          <Property Name="min_Sum" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Tip" Relationship="Self.FK_Prog_Tip" FromRole="Prog" ToRole="Tip" />
+          <NavigationProperty Name="Schet" Relationship="Self.FK_Schet_Prog" FromRole="Prog" ToRole="Schet" />
+        </EntityType>
+        <EntityType Name="Schet">
+          <Key>
+            <PropertyRef Name="Nschet" />
+          </Key>
+          <Property Name="Nschet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data_sozd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Sum" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Prog_FK" Type="Int32" />
+          <Property Name="Valute_FK" Type="Int32" Nullable="false" />
+          <Property Name="Client_FK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Schet_Client" FromRole="Schet" ToRole="Client" />
+          <NavigationProperty Name="Operacii" Relationship="Self.FK_Operacii_Schet" FromRole="Schet" ToRole="Operacii" />
+          <NavigationProperty Name="Operacii1" Relationship="Self.FK_Operacii_Schet1" FromRole="Schet" ToRole="Operacii" />
+          <NavigationProperty Name="Prog" Relationship="Self.FK_Schet_Prog" FromRole="Schet" ToRole="Prog" />
+          <NavigationProperty Name="Valute" Relationship="Self.FK_Schet_Valute" FromRole="Schet" ToRole="Valute" />
+        </EntityType>
+        <EntityType Name="Sotrudnic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dolgnost" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Paswoorld" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Operacii" Relationship="Self.FK_Operacii_Sotrudnic" FromRole="Sotrudnic" ToRole="Operacii" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Operacii" Relationship="Self.FK_Operacii_Status" FromRole="Status" ToRole="Operacii" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tip">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Prog" Relationship="Self.FK_Prog_Tip" FromRole="Tip" ToRole="Prog" />
+        </EntityType>
+        <EntityType Name="Tip_operacii">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Operacii" Relationship="Self.FK_Operacii_Tip_operacii" FromRole="Tip_operacii" ToRole="Operacii" />
+        </EntityType>
+        <EntityType Name="Valute">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Otnoshenie_k_rub_prod" Type="Double" Nullable="false" />
+          <Property Name="Otnoshenie_k_rub_pok" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Schet" Relationship="Self.FK_Schet_Valute" FromRole="Valute" ToRole="Schet" />
+        </EntityType>
+        <Association Name="FK_Schet_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Schet" Type="Self.Schet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Schet">
+              <PropertyRef Name="Client_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operacii_Schet">
+          <End Role="Schet" Type="Self.Schet" Multiplicity="0..1" />
+          <End Role="Operacii" Type="Self.Operacii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schet">
+              <PropertyRef Name="Nschet" />
+            </Principal>
+            <Dependent Role="Operacii">
+              <PropertyRef Name="In_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operacii_Schet1">
+          <End Role="Schet" Type="Self.Schet" Multiplicity="0..1" />
+          <End Role="Operacii" Type="Self.Operacii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schet">
+              <PropertyRef Name="Nschet" />
+            </Principal>
+            <Dependent Role="Operacii">
+              <PropertyRef Name="Out_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operacii_Sotrudnic">
+          <End Role="Sotrudnic" Type="Self.Sotrudnic" Multiplicity="0..1" />
+          <End Role="Operacii" Type="Self.Operacii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudnic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Operacii">
+              <PropertyRef Name="Sotrudnic_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operacii_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Operacii" Type="Self.Operacii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Operacii">
+              <PropertyRef Name="Status_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operacii_Tip_operacii">
+          <End Role="Tip_operacii" Type="Self.Tip_operacii" Multiplicity="0..1" />
+          <End Role="Operacii" Type="Self.Operacii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip_operacii">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Operacii">
+              <PropertyRef Name="Tip_operazii_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prog_Tip">
+          <End Role="Tip" Type="Self.Tip" Multiplicity="1" />
+          <End Role="Prog" Type="Self.Prog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Prog">
+              <PropertyRef Name="Tip_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schet_Prog">
+          <End Role="Prog" Type="Self.Prog" Multiplicity="0..1" />
+          <End Role="Schet" Type="Self.Schet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prog">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Schet">
+              <PropertyRef Name="Prog_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schet_Valute">
+          <End Role="Valute" Type="Self.Valute" Multiplicity="1" />
+          <End Role="Schet" Type="Self.Schet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Valute">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Schet">
+              <PropertyRef Name="Valute_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BankEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Operacii" EntityType="Self.Operacii" />
+          <EntitySet Name="Prog" EntityType="Self.Prog" />
+          <EntitySet Name="Schet" EntityType="Self.Schet" />
+          <EntitySet Name="Sotrudnic" EntityType="Self.Sotrudnic" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tip" EntityType="Self.Tip" />
+          <EntitySet Name="Tip_operacii" EntityType="Self.Tip_operacii" />
+          <EntitySet Name="Valute" EntityType="Self.Valute" />
+          <AssociationSet Name="FK_Schet_Client" Association="Self.FK_Schet_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Schet" EntitySet="Schet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operacii_Schet" Association="Self.FK_Operacii_Schet">
+            <End Role="Schet" EntitySet="Schet" />
+            <End Role="Operacii" EntitySet="Operacii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operacii_Schet1" Association="Self.FK_Operacii_Schet1">
+            <End Role="Schet" EntitySet="Schet" />
+            <End Role="Operacii" EntitySet="Operacii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operacii_Sotrudnic" Association="Self.FK_Operacii_Sotrudnic">
+            <End Role="Sotrudnic" EntitySet="Sotrudnic" />
+            <End Role="Operacii" EntitySet="Operacii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operacii_Status" Association="Self.FK_Operacii_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Operacii" EntitySet="Operacii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operacii_Tip_operacii" Association="Self.FK_Operacii_Tip_operacii">
+            <End Role="Tip_operacii" EntitySet="Tip_operacii" />
+            <End Role="Operacii" EntitySet="Operacii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prog_Tip" Association="Self.FK_Prog_Tip">
+            <End Role="Tip" EntitySet="Tip" />
+            <End Role="Prog" EntitySet="Prog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schet_Prog" Association="Self.FK_Schet_Prog">
+            <End Role="Prog" EntitySet="Prog" />
+            <End Role="Schet" EntitySet="Schet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schet_Valute" Association="Self.FK_Schet_Valute">
+            <End Role="Valute" EntitySet="Valute" />
+            <End Role="Schet" EntitySet="Schet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище BankModelContainer" CdmEntityContainer="BankEntities">
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="BankModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="Npasporta" ColumnName="Npasporta" />
+                <ScalarProperty Name="Serpasporta" ColumnName="Serpasporta" />
+                <ScalarProperty Name="Data_rog" ColumnName="Data_rog" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="pasworld" ColumnName="pasworld" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operacii">
+            <EntityTypeMapping TypeName="BankModel.Operacii">
+              <MappingFragment StoreEntitySet="Operacii">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Sum_In" ColumnName="Sum_In" />
+                <ScalarProperty Name="Out_FK" ColumnName="Out_FK" />
+                <ScalarProperty Name="In_FK" ColumnName="In_FK" />
+                <ScalarProperty Name="Vneshcniy_Nscheta" ColumnName="Vneshcniy_Nscheta" />
+                <ScalarProperty Name="Tip_operazii_FK" ColumnName="Tip_operazii_FK" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Sotrudnic_FK" ColumnName="Sotrudnic_FK" />
+                <ScalarProperty Name="Status_FK" ColumnName="Status_FK" />
+                <ScalarProperty Name="Sum_Out" ColumnName="Sum_Out" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prog">
+            <EntityTypeMapping TypeName="BankModel.Prog">
+              <MappingFragment StoreEntitySet="Prog">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Procent" ColumnName="Procent" />
+                <ScalarProperty Name="Tip_FK" ColumnName="Tip_FK" />
+                <ScalarProperty Name="dlitel_day_min" ColumnName="dlitel_day_min" />
+                <ScalarProperty Name="dlitel_day_max" ColumnName="dlitel_day_max" />
+                <ScalarProperty Name="min_Sum" ColumnName="min_Sum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schet">
+            <EntityTypeMapping TypeName="BankModel.Schet">
+              <MappingFragment StoreEntitySet="Schet">
+                <ScalarProperty Name="Nschet" ColumnName="Nschet" />
+                <ScalarProperty Name="Data_sozd" ColumnName="Data_sozd" />
+                <ScalarProperty Name="Sum" ColumnName="Sum" />
+                <ScalarProperty Name="Prog_FK" ColumnName="Prog_FK" />
+                <ScalarProperty Name="Valute_FK" ColumnName="Valute_FK" />
+                <ScalarProperty Name="Client_FK" ColumnName="Client_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sotrudnic">
+            <EntityTypeMapping TypeName="BankModel.Sotrudnic">
+              <MappingFragment StoreEntitySet="Sotrudnic">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="Dolgnost" ColumnName="Dolgnost" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Paswoorld" ColumnName="Paswoorld" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="BankModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BankModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tip">
+            <EntityTypeMapping TypeName="BankModel.Tip">
+              <MappingFragment StoreEntitySet="Tip">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tip_operacii">
+            <EntityTypeMapping TypeName="BankModel.Tip_operacii">
+              <MappingFragment StoreEntitySet="Tip_operacii">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Valute">
+            <EntityTypeMapping TypeName="BankModel.Valute">
+              <MappingFragment StoreEntitySet="Valute">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Otnoshenie_k_rub_prod" ColumnName="Otnoshenie_k_rub_prod" />
+                <ScalarProperty Name="Otnoshenie_k_rub_pok" ColumnName="Otnoshenie_k_rub_pok" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
