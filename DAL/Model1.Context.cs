@@ -31,6 +31,7 @@ namespace DAL
         public virtual DbSet<Schet> Schet { get; set; }
         public virtual DbSet<Sotrudnic> Sotrudnic { get; set; }
         public virtual DbSet<Status> Status { get; set; }
+        public virtual DbSet<Status_Scheta> Status_Scheta { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tip> Tip { get; set; }
         public virtual DbSet<Tip_operacii> Tip_operacii { get; set; }

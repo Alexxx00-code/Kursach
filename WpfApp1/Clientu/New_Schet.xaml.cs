@@ -12,16 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WpfApp1
+namespace WpfApp1.Clientu
 {
     /// <summary>
-    /// Логика взаимодействия для New_kredit.xaml
+    /// Логика взаимодействия для New_Schet.xaml
     /// </summary>
-    public partial class New_kredit : Window
+    public partial class New_Schet : Page
     {
-        public New_kredit()
+        public New_Schet(int id,ClientWindow window)
         {
             InitializeComponent();
+            DataContext = new New_SchetVM(id,window);
         }
     }
 }

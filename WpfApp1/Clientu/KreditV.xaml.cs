@@ -13,24 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApp1
+namespace WpfApp1.Clientu
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для KreditV.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class KreditV : Page
     {
-        public MainWindow()
+        public KreditV(int id, ClientWindow window)
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Sotrudnic f = new Sotrudnic();
-            Osnovnoe f1 = new Osnovnoe(login.Text);
-            f.Show();
-            f1.Show();
+            DataContext = new KreditVM(id, window);
         }
     }
 }

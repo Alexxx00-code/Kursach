@@ -27,6 +27,7 @@ namespace DAL
         public Nullable<int> Prog_FK { get; set; }
         public int Valute_FK { get; set; }
         public int Client_FK { get; set; }
+        public bool Status { get; set; }
     
         public virtual Client Client { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

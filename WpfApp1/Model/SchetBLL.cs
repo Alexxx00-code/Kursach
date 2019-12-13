@@ -10,8 +10,8 @@ namespace WpfApp1.Model
     public class SchetBLL
     {
         public int Nschet { get; set; }
-        public System.DateTime Data_sozd { get; set; }
-        public Nullable<decimal> Sum { get; set; }        
+        public DateTime Data_sozd { get; set; }
+        public decimal? Sum { get; set; }        
         public int Valute_FK { get; set; }
         public string Valute { get; set; }
         public int Client_FK { get; set; }

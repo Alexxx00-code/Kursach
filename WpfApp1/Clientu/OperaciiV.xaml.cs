@@ -10,18 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApp1
+namespace WpfApp1.Clientu
 {
     /// <summary>
-    /// Логика взаимодействия для New_Schet.xaml
+    /// Логика взаимодействия для OperaciiV.xaml
     /// </summary>
-    public partial class New_Schet : Window
+    public partial class OperaciiV : Page
     {
-        public New_Schet()
+        public OperaciiV(int id, ClientWindow window)
         {
             InitializeComponent();
+            DataContext = new OperaciiVM(id, window);
         }
     }
 }

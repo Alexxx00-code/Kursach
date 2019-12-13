@@ -8,24 +8,77 @@ using WpfApp1.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Controls;
+using System.Windows;
 
 namespace WpfApp1
 {
     public class Controler : INotifyPropertyChanged
     {
+        Window window;
+        Page newvklad;
         
-        public ObservableCollection<SchetBLL> schets { get; set; }
+        private Client user;
+        public ObservableCollection<Schet> Schetss { get; set; }
         BankEntities bd;
         int ID;
-        public Controler(int id)
+        
+        public Controler(int id, Window window)
         {
+            /*
             bd = new BankEntities();
             ID = id;
-            schets =new ObservableCollection<SchetBLL>( GetAllSchet().Where(i=>i.Client_FK==ID));
+            user = bd.Client.Find(id);
+            schets = new ObservableCollection<Schet>(user.Schet.Where(i => i.Prog == null));
+            vklads = new ObservableCollection<Schet>(user.Schet.Where(i => (i.Prog != null)&&(i.Prog.Tip.Name == "Кредит")));
+            kredits = new ObservableCollection<Schet>(user.Schet.Where(i => (i.Prog != null) &&( i.Prog.Tip.Name == "Вклад")));
+            operaciis = new ObservableCollection<Operacii>();
+            foreach (Schet s in user.Schet)
+            {
+                foreach (Operacii o in s.Operacii)
+                {
+                    operaciis.Add(o);
+                }
+                foreach (Operacii o in s.Operacii1)
+                {
+                    operaciis.Add(o);
+                }
+            } 
+            
+
+
+
+            this.window = window;
+            Schetss = new ObservableCollection<Schet>(bd.Schet.ToList().Where(i => i.Prog == null).ToList().Where(i => i.Client_FK == ID));
+            Schet schet = new Schet();
+            //schet.Valute.Name;*/
         }
+        
+        public RelayCommand D
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+
+                    try
+                    {
+                        //newvklad = new New_vklad();
+                        Window1 window1 = (Window1)window;
+                        //window1.Page.Content = newvklad;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                });
+            }
+           
+        }
+        /*
         public ObservableCollection<SchetBLL> GetAllSchet()
-        {            
-            return new ObservableCollection < SchetBLL > (bd.Schet.ToList().Where(i => i.Prog == null).ToList().Select(i => new SchetBLL(i, GetAllValute())));
+        {
+            return new ObservableCollection<SchetBLL>(bd.Schet.ToList().Where(i => i.Prog == null).ToList().Select(i => new SchetBLL(i, GetAllValute())));
         }
         public List<ValuteBLL> GetAllValute()
         {
@@ -62,15 +115,15 @@ namespace WpfApp1
         public List<ClientBLL> GetAllClient()
         {
             return bd.Client.ToList().Select(i => new ClientBLL(i)).ToList();
-        }
-        SchetBLL selectedSchet;
-        public SchetBLL SelectedSchet
+        }*/
+        Schet selected;
+        public Schet Selected
         {
-            get { return selectedSchet; }
+            get { return selected; }
             set
             {
-                selectedSchet = value;
-                OnPropertyChanged("SelectedSchet");
+                selected = value;
+                OnPropertyChanged("Selected");
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;

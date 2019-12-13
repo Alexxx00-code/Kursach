@@ -54,6 +54,7 @@
           <Property Name="Prog_FK" Type="int" />
           <Property Name="Valute_FK" Type="int" Nullable="false" />
           <Property Name="Client_FK" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Sotrudnic">
           <Key>
@@ -66,6 +67,13 @@
           <Property Name="Paswoorld" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status_Scheta">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -220,6 +228,7 @@
           <EntitySet Name="Schet" EntityType="Self.Schet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sotrudnic" EntityType="Self.Sotrudnic" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status_Scheta" EntityType="Self.Status_Scheta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tip" EntityType="Self.Tip" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tip_operacii" EntityType="Self.Tip_operacii" Schema="dbo" store:Type="Tables" />
@@ -323,6 +332,7 @@
           <Property Name="Prog_FK" Type="Int32" />
           <Property Name="Valute_FK" Type="Int32" Nullable="false" />
           <Property Name="Client_FK" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Schet_Client" FromRole="Schet" ToRole="Client" />
           <NavigationProperty Name="Operacii" Relationship="Self.FK_Operacii_Schet" FromRole="Schet" ToRole="Operacii" />
           <NavigationProperty Name="Operacii1" Relationship="Self.FK_Operacii_Schet1" FromRole="Schet" ToRole="Operacii" />
@@ -347,6 +357,13 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Operacii" Relationship="Self.FK_Operacii_Status" FromRole="Status" ToRole="Operacii" />
+        </EntityType>
+        <EntityType Name="Status_Scheta">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -499,6 +516,7 @@
           <EntitySet Name="Schet" EntityType="Self.Schet" />
           <EntitySet Name="Sotrudnic" EntityType="Self.Sotrudnic" />
           <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="Status_Scheta" EntityType="Self.Status_Scheta" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Tip" EntityType="Self.Tip" />
           <EntitySet Name="Tip_operacii" EntityType="Self.Tip_operacii" />
@@ -597,6 +615,7 @@
                 <ScalarProperty Name="Prog_FK" ColumnName="Prog_FK" />
                 <ScalarProperty Name="Valute_FK" ColumnName="Valute_FK" />
                 <ScalarProperty Name="Client_FK" ColumnName="Client_FK" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -614,6 +633,14 @@
           <EntitySetMapping Name="Status">
             <EntityTypeMapping TypeName="BankModel.Status">
               <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status_Scheta">
+            <EntityTypeMapping TypeName="BankModel.Status_Scheta">
+              <MappingFragment StoreEntitySet="Status_Scheta">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>

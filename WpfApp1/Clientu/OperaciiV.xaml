@@ -1,0 +1,21 @@
+﻿<Page x:Class="WpfApp1.Clientu.OperaciiV"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.Clientu"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="OperaciiV">
+
+    <Grid>
+
+        <DataGrid ItemsSource="{Binding operaciis}" IsReadOnly="True" CanUserAddRows="False"  >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Тип операции"  Binding="{Binding Tip_operacii.Name}" />
+                <DataGridTextColumn Header="Cумма"  Binding="{Binding Sum_In}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Page>

@@ -126,8 +126,34 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Autor.xaml.cs">
+      <DependentUpon>Autor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="Clientu\KreditV.xaml.cs">
+      <DependentUpon>KreditV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Clientu\KreditVM.cs" />
+    <Compile Include="Clientu\New_SchetVM.cs" />
+    <Compile Include="Clientu\New_VkladVM.cs" />
+    <Compile Include="Clientu\OperaciiVM.cs" />
+    <Compile Include="Clientu\OperaciiV.xaml.cs">
+      <DependentUpon>OperaciiV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Clientu\PerevodVM.cs" />
+    <Compile Include="Clientu\SchetV.xaml.cs">
+      <DependentUpon>SchetV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Clientu\SchetVM.cs" />
+    <Compile Include="Clientu\VkladV.xaml.cs">
+      <DependentUpon>VkladV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Clientu\VkladVM.cs" />
+    <Compile Include="ClientWindow.xaml.cs">
+      <DependentUpon>ClientWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controler.cs" />
+    <Compile Include="MainWindowVM.cs" />
     <Compile Include="Model\ClientBLL.cs" />
     <Compile Include="Model\KreditBLL.cs" />
     <Compile Include="Model\OperaciiBLL.cs" />
@@ -139,16 +165,21 @@
     <Compile Include="Model\Tip_program.cs" />
     <Compile Include="Model\ValuteBLL.cs" />
     <Compile Include="Model\VkladBLL.cs" />
+    <Compile Include="RelayCommand.cs" />
+    <Compile Include="TransferManedger.cs" />
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Сотрудику\Info_Client.xaml.cs">
       <DependentUpon>Info_Client.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Klient\New_Schet.xaml.cs">
+    <Compile Include="Clientu\New_Schet.xaml.cs">
       <DependentUpon>New_Schet.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Klient\New_kredit.xaml.cs">
+    <Compile Include="Clientu\New_kredit.xaml.cs">
       <DependentUpon>New_kredit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Klient\Perevod.xaml.cs">
+    <Compile Include="Clientu\Perevod.xaml.cs">
       <DependentUpon>Perevod.xaml</DependentUpon>
     </Compile>
     <Compile Include="Сотрудику\New_Prog.xaml.cs">
@@ -160,37 +191,54 @@
     <Compile Include="Сотрудику\Sotrudnic.xaml.cs">
       <DependentUpon>Sotrudnic.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Klient\New_vklad.xaml.cs">
+    <Compile Include="Clientu\New_vklad.xaml.cs">
       <DependentUpon>New_vklad.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Klient\Osnovnoe.xaml.cs">
-      <DependentUpon>Osnovnoe.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Сотрудику\Info_Client.xaml">
+    <Page Include="Autor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Clientu\KreditV.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Clientu\OperaciiV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Clientu\SchetV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Clientu\VkladV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Сотрудику\Info_Client.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="Klient\New_Schet.xaml">
+    <Page Include="Clientu\New_Schet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Klient\New_kredit.xaml">
+    <Page Include="Clientu\New_kredit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Klient\Perevod.xaml">
+    <Page Include="Clientu\Perevod.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -206,11 +254,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Klient\New_vklad.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Klient\Osnovnoe.xaml">
+    <Page Include="Clientu\New_vklad.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

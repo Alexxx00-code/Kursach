@@ -15,13 +15,14 @@ using System.Windows.Shapes;
 namespace WpfApp1
 {
     /// <summary>
-    /// Логика взаимодействия для New_vklad.xaml
+    /// Логика взаимодействия для Window1.xaml
     /// </summary>
-    public partial class New_vklad : Window
+    public partial class Window1 : Window
     {
-        public New_vklad()
+        public Window1()
         {
             InitializeComponent();
+            DataContext = new Controler(1,this);
         }
     }
 }

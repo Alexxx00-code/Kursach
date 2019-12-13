@@ -10,18 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApp1
+namespace WpfApp1.Clientu
 {
     /// <summary>
-    /// Логика взаимодействия для Perevod.xaml
+    /// Логика взаимодействия для Schet.xaml
     /// </summary>
-    public partial class Perevod : Window
+    public partial class SchetV : Page
     {
-        public Perevod()
+        public SchetV(int id, ClientWindow window)
         {
             InitializeComponent();
+            DataContext = new SchetVM(id,window);
         }
     }
 }

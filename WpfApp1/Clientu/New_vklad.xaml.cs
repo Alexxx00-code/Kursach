@@ -11,28 +11,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using WpfApp1;
-using WpfApp1.Model;
 
-namespace WpfApp1
+namespace WpfApp1.Clientu
 {
     /// <summary>
-    /// Логика взаимодействия для Osnovnoe.xaml
+    /// Логика взаимодействия для New_vklad.xaml
     /// </summary>
-    public partial class Osnovnoe : Window
+    public partial class New_vklad : Page
     {
-        Controler bd;
-        int Client_ID;
-        public Osnovnoe(string login)
+        public New_vklad(int id, ClientWindow window)
         {
             InitializeComponent();
-            Client_ID = 1;
-            DataContext =new Controler(Client_ID);
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
+            DataContext = new New_VkladVM(id, window);
         }
     }
+    
 }

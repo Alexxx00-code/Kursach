@@ -1,11 +1,11 @@
-﻿<Window x:Class="WpfApp1.New_Schet"
+﻿<Page x:Class=" WpfApp1.Clientu.New_Schet"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Открыть Счёт" Height="150" Width="250">
+        Title="Открыть Счёт" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*" ></RowDefinition>
@@ -23,9 +23,20 @@
             <ColumnDefinition Width="0.02*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Row="6" Content="ОК" Grid.Column="1" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="50" />
-        <ComboBox Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" Width="200"/>
-        <Label Content="Валюта" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
 
+        <ComboBox Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" Width="200"  
+                  ItemsSource="{Binding Valutes}" SelectedItem="{Binding SelectedValute}"  DisplayMemberPath="Name">
+            
+        </ComboBox>
+        <Label Content="Валюта" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
+        <Grid Grid.Column="1" Grid.Row="3">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" CommandParameter="{Binding SelectedValute}" Command="{Binding Cansel}">Отмена</Button>
+            <Button Grid.Column="1" Command="{Binding OK}">ОК</Button>
+        </Grid>
     </Grid>
-</Window>
+</Page>
