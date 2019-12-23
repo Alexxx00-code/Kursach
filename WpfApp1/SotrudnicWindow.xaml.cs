@@ -22,7 +22,7 @@ namespace WpfApp1
         public SotrudnicWindow()
         {
             InitializeComponent();
-            DataContext = new SotrudnicWindowVM(1);
+            DataContext = new SotrudnicWindowVM(1,this);
         }
     }
 }

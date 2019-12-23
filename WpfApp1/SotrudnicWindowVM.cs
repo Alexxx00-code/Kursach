@@ -9,13 +9,14 @@ using WpfApp1.Sotrudnic;
 
 namespace WpfApp1
 {
-    class SotrudnicWindowVM 
+    public class SotrudnicWindowVM 
     {
         Bank bd;
         Model.Sotrudnic sotrudnic;
         int ID;
         ClientV clientV;
-        SotrudnicWindow window;
+        Operacii_na_potvV Operacii;
+        public SotrudnicWindow window;
         public SotrudnicWindowVM(int id, SotrudnicWindow window)
         {
             bd = new Bank();
@@ -46,6 +47,30 @@ namespace WpfApp1
                 clientV = new ClientV(ID, this, bd);
             clientV.UPD();
             window.Page.Content = clientV;
+        }
+        public RelayCommand OperaciiViev
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    try
+                    {
+                        operacii();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                });
+            }
+        }
+        public void operacii()
+        {
+            if (Operacii == null)
+                Operacii = new Operacii_na_potvV(ID, this, bd);
+            Operacii.UPD();
+            window.Page.Content = Operacii;
         }
     }
 }

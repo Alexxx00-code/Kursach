@@ -35,7 +35,7 @@ namespace WpfApp1.Clientu
                     operaciis.Add(o);
                 }
             }
-
+            this.window = window;
         }
         public void UPD()
         {
@@ -43,11 +43,8 @@ namespace WpfApp1.Clientu
             operaciis.Clear();
             foreach (Operacii operacii in bd.Operacii)
             {
-                operaciis.Add(operacii);
-               
+                operaciis.Add(operacii);               
             }
-           
-
         }
     }
 }

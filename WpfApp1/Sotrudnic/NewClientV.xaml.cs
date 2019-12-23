@@ -13,25 +13,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.Model;
-
 namespace WpfApp1.Sotrudnic
 {
     /// <summary>
-    /// Логика взаимодействия для ClientV.xaml
+    /// Логика взаимодействия для NewClientV.xaml
     /// </summary>
-    public partial class ClientV : Page
+    public partial class NewClientV : Page
     {
-        ClientVM clientVM;
-        public ClientV(int id,SotrudnicWindowVM windowVM,Bank bank)
+        public NewClientV(int ID,SotrudnicWindowVM windowVM,Bank bank)
         {
             InitializeComponent();
-            clientVM = new ClientVM(id, windowVM, bank);
-            DataContext=clientVM;
+            DataContext = new NewClientVM(ID, windowVM, bank);
         }
-
-        public void UPD()
+        public NewClientV(int ID, SotrudnicWindowVM windowVM, Bank bank,Client client)
         {
-            clientVM.UPD();
+            InitializeComponent();
+            DataContext = new NewClientVM(ID, windowVM, bank,client);
         }
     }
 }

@@ -10,7 +10,7 @@ using System.Collections.ObjectModel;
 
 namespace WpfApp1.Clientu
 {
-    class VkladVM : Control
+    class VkladVM : Base
     {
         ClientWindowVM window;
         

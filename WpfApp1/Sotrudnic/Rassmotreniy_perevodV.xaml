@@ -1,0 +1,30 @@
+﻿<Page x:Class="WpfApp1.Sotrudnic.Rassmotreniy_perevodV"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.Sotrudnic"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="200"
+      Title="Rassmotreniy_perevod">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="0.4*"></RowDefinition>
+            <RowDefinition Height="0.4*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <StackPanel TextElement.FontSize="15" Grid.Row="0"  HorizontalAlignment="Center">
+            <TextBlock>Перевод в другой банк</TextBlock>
+            <TextBlock>Номер счёта</TextBlock>
+            <TextBox IsReadOnly="True" Text="{Binding operacii.Vneshcniy_Nscheta}"></TextBox>
+            <TextBlock>Сумма</TextBlock>
+            <TextBox IsReadOnly="True" Text="{Binding operacii.Sum_In}"></TextBox>
+            <TextBlock>Валюта</TextBlock>
+            <TextBox IsReadOnly="True" Text="{Binding operacii.Schet1.Valute.Name}"></TextBox>
+        </StackPanel>
+        <Button Command="{Binding Can}" Grid.Row="1" >Отказать</Button>
+        <Button Command="{Binding OK}" Grid.Row="2">Подтвердить</Button>
+    </Grid>
+</Page>

@@ -27,8 +27,7 @@ namespace WpfApp1.Clientu
             InitializeComponent();
             schetVM = new SchetVM(id, window, bank);
             DataContext = schetVM;
-            Binding binding = new Binding();
-            binding.ElementName = "";
+            
         }
         public void UPD()
         {

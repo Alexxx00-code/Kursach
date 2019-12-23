@@ -9,6 +9,53 @@
       Title="ClientV">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7" ></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="7"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.05*" ></ColumnDefinition>
+            <ColumnDefinition Width="Auto" ></ColumnDefinition>
+            <ColumnDefinition Width="0.05*" ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="2" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*" ></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="0.1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="0.05*" ></ColumnDefinition>
+                <ColumnDefinition Width="Auto" ></ColumnDefinition>
+                <ColumnDefinition Width="0.05*" ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Content="Новый клиент" Grid.Column="2"   Grid.Row="1"  Command="{Binding New}" />
+
+            <Button Content="Изменить клиента" Grid.Column="2"   Grid.Row="3"  Command="{Binding Change}" />
+            <Button Content="Информация о клиенте" Grid.Column="2"   Grid.Row="5"   />
+        </Grid>
+        <DataGrid Grid.Column="0"   Grid.Row="1"  AutoGenerateColumns="False"  ItemsSource="{Binding clients}"    IsReadOnly="True"                 
+                 SelectedItem="{Binding SelectedClient}" CanUserAddRows="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ФИО"  Binding="{Binding FIO}" />
+                <DataGridTextColumn Header="Дата рождения"  Binding="{Binding Data_rog}"/>
+                <DataGridTextColumn Header="№ паспорта"  Binding="{Binding Npasporta}"/>
+                <DataGridTextColumn Header="Серия"  Binding="{Binding Serpasporta}"/>
+                <DataGridTextColumn Header="Логин"  Binding="{Binding login}"/>
+                <DataGridTextColumn Header="Пароль"  Binding="{Binding pasworld}"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+
     </Grid>
 </Page>

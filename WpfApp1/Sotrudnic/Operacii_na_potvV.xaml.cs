@@ -13,25 +13,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.Model;
-
 namespace WpfApp1.Sotrudnic
 {
     /// <summary>
-    /// Логика взаимодействия для ClientV.xaml
+    /// Логика взаимодействия для Operacii_na_potv.xaml
     /// </summary>
-    public partial class ClientV : Page
+    public partial class Operacii_na_potvV : Page
     {
-        ClientVM clientVM;
-        public ClientV(int id,SotrudnicWindowVM windowVM,Bank bank)
+        Operacii_na_potvVM VM;
+        public Operacii_na_potvV(int id, SotrudnicWindowVM window, Bank bank)
         {
             InitializeComponent();
-            clientVM = new ClientVM(id, windowVM, bank);
-            DataContext=clientVM;
+            VM = new Operacii_na_potvVM(id,window,bank,this);
+            DataContext = VM;
         }
-
         public void UPD()
         {
-            clientVM.UPD();
+            VM.UPD();
         }
     }
 }

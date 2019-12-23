@@ -10,18 +10,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Model;
 
-namespace WpfApp1
+namespace WpfApp1.Sotrudnic
 {
     /// <summary>
-    /// Логика взаимодействия для New_Client.xaml
+    /// Логика взаимодействия для Rassmotreniy_vkladV.xaml
     /// </summary>
-    public partial class New_Client : Window
+    public partial class Rassmotreniy_vkladV : Page
     {
-        public New_Client()
+       
+        public Rassmotreniy_vkladV(int id, Operacii operacii, Bank bank, SotrudnicWindowVM window)
         {
             InitializeComponent();
+            DataContext = new Rassmotreniy_vkladVM(id, operacii, bank, window);
         }
     }
 }

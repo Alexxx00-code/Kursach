@@ -17,21 +17,14 @@ using WpfApp1.Model;
 namespace WpfApp1.Sotrudnic
 {
     /// <summary>
-    /// Логика взаимодействия для ClientV.xaml
+    /// Логика взаимодействия для Rassmotreniy_kreditV.xaml
     /// </summary>
-    public partial class ClientV : Page
+    public partial class Rassmotreniy_kreditV : Page
     {
-        ClientVM clientVM;
-        public ClientV(int id,SotrudnicWindowVM windowVM,Bank bank)
+        public Rassmotreniy_kreditV(int id,Operacii operacii,Bank bank, SotrudnicWindowVM window)
         {
             InitializeComponent();
-            clientVM = new ClientVM(id, windowVM, bank);
-            DataContext=clientVM;
-        }
-
-        public void UPD()
-        {
-            clientVM.UPD();
+            DataContext = new Rassmotreniy_kreditVM(id,operacii,bank,window);
         }
     }
 }
