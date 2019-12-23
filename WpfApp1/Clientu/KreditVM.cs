@@ -30,6 +30,24 @@ namespace WpfApp1.Clientu
             this.window = window;
             
         }
+        public RelayCommand New
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    try
+                    {
+                        window.window.Page.Content = new New_kredit(ID, window, bd);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                });
+            }
+
+        }
         public void UPD()
         {
             kredits.Clear();

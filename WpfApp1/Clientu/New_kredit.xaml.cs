@@ -11,17 +11,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.Model;
 
 namespace WpfApp1.Clientu
 {
     /// <summary>
     /// Логика взаимодействия для New_kredit.xaml
     /// </summary>
-    public partial class New_kredit : Window
+    public partial class New_kredit : Page
     {
-        public New_kredit()
+     
+        public New_kredit(int id, ClientWindowVM window, Bank bank)
         {
             InitializeComponent();
+            DataContext = new New_KreditVM(id, window, bank);
         }
     }
 }

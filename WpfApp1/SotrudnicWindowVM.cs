@@ -72,5 +72,29 @@ namespace WpfApp1
             Operacii.UPD();
             window.Page.Content = Operacii;
         }
+        public RelayCommand ProgramViev
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    try
+                    {
+                        program();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                });
+            }
+        }
+        public void program()
+        {
+            if (Operacii == null)
+                Operacii = new Operacii_na_potvV(ID, this, bd);
+            Operacii.UPD();
+            window.Page.Content = Operacii;
+        }
     }
 }

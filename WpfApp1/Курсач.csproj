@@ -136,6 +136,7 @@
       <DependentUpon>KreditV.xaml</DependentUpon>
     </Compile>
     <Compile Include="Clientu\KreditVM.cs" />
+    <Compile Include="Clientu\New_KreditVM.cs" />
     <Compile Include="Clientu\New_SchetVM.cs" />
     <Compile Include="Clientu\New_VkladVM.cs" />
     <Compile Include="Clientu\OperaciiVM.cs" />
@@ -182,10 +183,15 @@
       <DependentUpon>NewClientV.xaml</DependentUpon>
     </Compile>
     <Compile Include="Sotrudnic\NewClientVM.cs" />
+    <Compile Include="Sotrudnic\New_ProgVM.cs" />
     <Compile Include="Sotrudnic\Operacii_na_potvVM.cs" />
     <Compile Include="Sotrudnic\Operacii_na_potvV.xaml.cs">
       <DependentUpon>Operacii_na_potvV.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Sotrudnic\ProgramV.xaml.cs">
+      <DependentUpon>ProgramV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sotrudnic\ProgramVM.cs" />
     <Compile Include="Sotrudnic\Rassmotreniy_kreditV.xaml.cs">
       <DependentUpon>Rassmotreniy_kreditV.xaml</DependentUpon>
     </Compile>
@@ -257,6 +263,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Sotrudnic\Operacii_na_potvV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sotrudnic\ProgramV.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -10,26 +10,32 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp1.Sotrudnic;
 using WpfApp1.Model;
-namespace WpfApp1
+
+namespace WpfApp1.Sotrudnic
 {
     /// <summary>
-    /// Логика взаимодействия для New_Prog.xaml
+    /// Логика взаимодействия для ProgramV.xaml
     /// </summary>
-    public partial class New_ProgV : Page
+    public partial class ProgramV : Page
     {
-     
-        public New_ProgV(int ID, SotrudnicWindowVM windowVM, Bank bank)
+        public ProgramV()
         {
             InitializeComponent();
-            DataContext = new New_ProgVM(ID, windowVM, bank);
         }
-        public New_ProgV(int ID, SotrudnicWindowVM windowVM, Bank bank, Prog prog)
+        ProgramVM programVM;
+        public ProgramV(int id, SotrudnicWindowVM windowVM, Bank bank)
         {
             InitializeComponent();
-            DataContext = new New_ProgVM(ID, windowVM, bank, prog);
+            programVM = new ProgramVM(id, windowVM, bank);
+            DataContext = programVM;
+        }
+
+        public void UPD()
+        {
+            programVM.UPD();
         }
     }
 }

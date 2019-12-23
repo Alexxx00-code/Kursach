@@ -92,8 +92,15 @@ namespace WpfApp1.Clientu
                     {
                         if (SelectedSchet.Sum - Sum > 0)
                         {
-                            TransferManedger.Create_Vklad(user, SelectedValute, SelectedProgram, Sum, SelectedSchet, bd);
-                            window.vklad();
+                            if (SelectedProgram.min_Sum <= Sum)
+                            {
+                                
+                                    TransferManedger.Create_Vklad(user, SelectedValute, SelectedProgram, Sum, SelectedSchet, bd);
+                                    window.vklad();
+                                
+                            }
+                            else
+                                MessageBox.Show("Не достаточная сумма");
                         }
                         else
                             MessageBox.Show("Не хватает средств");

@@ -1,23 +1,23 @@
-﻿<Window x:Class=" WpfApp1.Clientu.New_kredit"
+﻿<Page x:Class=" WpfApp1.Clientu.New_kredit"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="New_kredit" Height="450" Width="800">
+        Title="New_kredit" >
     <Grid>       
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*" ></RowDefinition>
             <RowDefinition></RowDefinition>
+            
             <RowDefinition ></RowDefinition>
             <RowDefinition ></RowDefinition>
             <RowDefinition ></RowDefinition>
             <RowDefinition ></RowDefinition>
             <RowDefinition ></RowDefinition>
             <RowDefinition ></RowDefinition>
-            <RowDefinition ></RowDefinition>
-            <RowDefinition ></RowDefinition>
+            
             <RowDefinition Height="0.1*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -26,17 +26,34 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="0.02*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Button Grid.Row="9" Content="ОК" Grid.Column="2" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="50"  />
-        <Button Grid.Row="9" Content="Отмена" Grid.Column="1" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="50"  />
+        <Button Grid.Row="7" Content="ОК" Command="{Binding OK}" Grid.Column="2" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="50"  />
+        <Button Grid.Row="7" Content="Отмена" Grid.Column="1" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="50"  />
         <Label Content="Валюта" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
-        <ComboBox Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" Width="200"/>
-        <Label Content="Программа" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>        
-        <DataGrid Grid.Row="2" Grid.Column="1" Grid.RowSpan="7"/>
-        <Label Content="Сумма" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
-        <TextBlock Grid.Column="2" TextAlignment="Center"  Grid.Row="4" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <Label Content="Длительность в месецах" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
-        <TextBlock Grid.Column="2" TextAlignment="Center"  Grid.Row="6" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <Label Content="Счет куда поступят деньги" Grid.Row="7" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
-        <TextBlock Grid.Column="2" TextAlignment="Center"  Grid.Row="8" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <ComboBox Grid.Column="2"  Grid.Row="2" VerticalAlignment="Center"   ItemsSource="{Binding Valutes}" SelectedItem="{Binding SelectedValute}"  DisplayMemberPath="Name" Height="22"/>
+        <StackPanel Grid.Row="3" Grid.Column="2" Grid.RowSpan="4"  VerticalAlignment="Center">
+            <Label Content="Минимальная процентная стовка" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
+            <TextBox IsReadOnly="True" Grid.Column="1" TextAlignment="Center"  Grid.Row="2"  Text="{Binding Proc}" VerticalAlignment="Top"/>
+            <Label Content="Сумма" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
+            <TextBox Grid.Column="2" TextAlignment="Center"  Grid.Row="4" TextWrapping="Wrap" Text="{Binding Sum,StringFormat={}{0:F3} }" VerticalAlignment="Top"/>
+            <Label Content="Сумма ежемесечной выплаты" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
+            <TextBox Grid.Column="2" TextAlignment="Center"  Grid.Row="6" TextWrapping="Wrap" Text="{Binding Sum_m,StringFormat={}{0:F3}}" VerticalAlignment="Top"/>
+        </StackPanel>
+        <Label Content="Счет куда поступят деньги" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
+        
+        <DataGrid Grid.Column="1"   Grid.Row="4" Grid.RowSpan="3"  AutoGenerateColumns="False"  ItemsSource="{Binding Schets}"    IsReadOnly="True"                 
+                 SelectedItem="{Binding SelectedSchet}" CanUserAddRows="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Тип"  Binding="{Binding Prog.Tip.Name}" />
+                <DataGridTextColumn Header="№ счёта"  Binding="{Binding Nschet}" />
+                <DataGridTextColumn Header="Дата создания"  Binding="{Binding Data_sozd}"/>
+                <DataGridTextColumn Header="Сумма"  Binding="{Binding Sum}"/>
+                <DataGridTextColumn Header="Валюта"  Binding="{Binding Valute.Name}"/>
+                <DataGridTextColumn Header="Программа"  Binding="{Binding Prog.Name}"/>
+
+            </DataGrid.Columns>
+            
+        </DataGrid>
+        <DatePicker Grid.Column="1" Grid.Row="2" SelectedDate="{Binding Date}"></DatePicker>
+        <Label Content="До какой даты берется кредит" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
     </Grid>
-</Window>
+</Page>
