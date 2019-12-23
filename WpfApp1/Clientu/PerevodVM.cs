@@ -23,8 +23,8 @@ namespace WpfApp1.Clientu
             bd = bank;
             ID = id;
             user = bd.Client.Find(id);
-            schets_out = new ObservableCollection<Schet>(user.Schet.Where(i => i.Status == true));
-            schets_in = new ObservableCollection<Schet>(user.Schet.Where(i => i.Status == true));
+            schets_out = new ObservableCollection<Schet>(user.Schet.Where(i => (i.Status == true)&&((i.Prog==null)||(i.Prog.Tip.Name == "Вклад"))));
+            schets_in = new ObservableCollection<Schet>(user.Schet.Where(i => (i.Status == true) && ((i.Prog == null) || (i.Prog.Tip.Name == "Кредит"))));
             this.window = window;
         }
         public PerevodVM(int id, ClientWindowVM window,Schet schet, Bank bank) 
@@ -32,8 +32,8 @@ namespace WpfApp1.Clientu
             bd = bank;
             ID = id;
             user = bd.Client.Find(id);
-            schets_out = new ObservableCollection<Schet>(user.Schet.Where(i=>i.Status == true));
-            schets_in = new ObservableCollection<Schet>(user.Schet.Where(i => i.Status == true));
+            schets_out = new ObservableCollection<Schet>(user.Schet.Where(i => (i.Status == true) && ((i.Prog == null) || (i.Prog.Tip.Name == "Вклад"))));
+            schets_in = new ObservableCollection<Schet>(user.Schet.Where(i => (i.Status == true) && ((i.Prog == null) || (i.Prog.Tip.Name == "Кредит"))));
             this.window = window;
         }
         bool select_vnschet = false;
@@ -66,8 +66,7 @@ namespace WpfApp1.Clientu
             {
                 schet_vibr = value;                
                 SelectedIn = null;
-                OnPropertyChanged("Schet_vibr");
-                
+                OnPropertyChanged("Schet_vibr");                
             }
         }
 
@@ -77,8 +76,12 @@ namespace WpfApp1.Clientu
             get { return selectedOut; }
             set
             {               
-                    selectedOut = value;
-                    OnPropertyChanged("SelectedOut");                
+                selectedOut = value;
+                if (value.Prog.Tip.Name == "Вклад")
+                {
+                    SumOut = (decimal)value.Sum;
+                }
+                OnPropertyChanged("SelectedOut");             
             }
         }
 
@@ -104,6 +107,11 @@ namespace WpfApp1.Clientu
                 try
                 {
                     Sum = value;
+                    if (SelectedOut.Prog.Tip.Name == "Вклад")   
+                    {
+                        Sum = (decimal)SelectedOut.Sum;
+                    }
+
                     if (selectedOut.ValuteID != selectedIn.ValuteID)
                         SumIn = value * (decimal)selectedIn.Valute.Otnoshenie_k_rub_pok / (decimal)selectedOut.Valute.Otnoshenie_k_rub_prod-value ;
                     
@@ -141,7 +149,17 @@ namespace WpfApp1.Clientu
                                 {
                                     if (SelectedIn != null)
                                     {
-                                        TransferManedger.Perevod_vnutri(SelectedOut, SelectedIn, SumOut, bd);
+                                        if (SelectedOut.Prog.Tip.Name == "Вклад")
+                                        {
+                                            TransferManedger.Delete_Vklad(SelectedOut,SelectedIn,bd);
+                                        }
+                                        else
+                                            if ((SelectedIn.Prog.Tip.Name == "Кредит")&&(SelectedIn.Sum+Sum>0))
+                                            {
+                                            TransferManedger.Delete_Kredit(SelectedOut, SelectedIn, bd);
+                                            }
+                                            else
+                                               TransferManedger.Perevod_vnutri(SelectedOut, SelectedIn, SumOut, bd);
                                         UPD();
                                     }
                                     else

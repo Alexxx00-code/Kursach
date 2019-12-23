@@ -42,7 +42,6 @@
             <Button Content="Открыть вклад" Grid.Column="2"   Grid.Row="1"  Command="{Binding New}" />
 
             <Button Content="Закрыть вклад" Grid.Column="2"   Grid.Row="3"   />
-            <Button Content="Информация о вкладе" Grid.Column="2"   Grid.Row="5"   />
         </Grid>
         <DataGrid Grid.Column="0"   Grid.Row="1"  AutoGenerateColumns="False"  ItemsSource="{Binding vklads}"    IsReadOnly="True"                 
                  SelectedItem="{Binding SelectedSchet}" CanUserAddRows="False" >
@@ -52,7 +51,7 @@
                 <DataGridTextColumn Header="Сумма"  Binding="{Binding Sum}"/>
                 <DataGridTextColumn Header="Валюта"  Binding="{Binding Valute.Name}"/>
                 <DataGridTextColumn Header="Программа"  Binding="{Binding Prog.Name}"/>
-
+                <DataGridTextColumn Header="Процент"  Binding="{Binding Prog.Procent}"/>
             </DataGrid.Columns>
 
         </DataGrid>

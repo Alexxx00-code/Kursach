@@ -149,7 +149,28 @@ namespace WpfApp1
             bank.Operacii.Add(operacii);
             return bank.SaveChanges();
         }
-
+        static public int Delete_Kredit(Schet Out, Schet del, Bank bank)
+        {
+            del.Status = false;
+            Operacii operacii = new Operacii();
+            operacii.ID = 1;
+            operacii.Date = DateTime.Now;
+            operacii.StatusID = bank.Status.Where(i => i.Name == "Выполнена").FirstOrDefault().ID;
+            operacii.OutID = Out.Nschet;
+            operacii.InID = del.Nschet;
+            operacii.Tip_operaziiID = bank.Tip_operacii.Where(i => i.Name == "Закрытие кредита").FirstOrDefault().ID;
+            if (Out.ValuteID == del.ValuteID)
+            {
+                operacii.Sum_In = operacii.Sum_Out = (-1)*del.Sum;
+            }
+            else
+            {
+                operacii.Sum_Out = del.Sum * (decimal)del.Valute.Otnoshenie_k_rub_pok / (decimal)Out.Valute.Otnoshenie_k_rub_prod;
+                operacii.Sum_In = del.Sum;
+            }
+            bank.Operacii.Add(operacii);
+            return bank.SaveChanges();
+        }
         static public int Delete_Schet(Schet del, Bank bank)
         {
             if (del.Client.Schet.Where(i => (i.ProgID == null)&&(i.Status==true)).Count() > 1)
