@@ -16,13 +16,13 @@ namespace DAL
     {
         public int ID { get; set; }
         public Nullable<decimal> Sum_In { get; set; }
-        public Nullable<int> Out_FK { get; set; }
-        public Nullable<int> In_FK { get; set; }
+        public Nullable<int> OutID { get; set; }
+        public Nullable<int> InID { get; set; }
         public Nullable<int> Vneshcniy_Nscheta { get; set; }
-        public Nullable<int> Tip_operazii_FK { get; set; }
+        public Nullable<int> Tip_operaziiID { get; set; }
         public System.DateTime Date { get; set; }
-        public Nullable<int> Sotrudnic_FK { get; set; }
-        public int Status_FK { get; set; }
+        public Nullable<int> SotrudnicID { get; set; }
+        public int StatusID { get; set; }
         public Nullable<decimal> Sum_Out { get; set; }
     
         public virtual Schet Schet { get; set; }

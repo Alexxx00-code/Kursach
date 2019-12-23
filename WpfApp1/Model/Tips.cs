@@ -6,12 +6,12 @@ namespace WpfApp1.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Tip_operacii
+    public partial class Tip
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tip_operacii()
+        public Tip()
         {
-            Operaciis = new HashSet<Operacii>();
+            Prog = new HashSet<Prog>();
         }
 
         public int ID { get; set; }
@@ -19,6 +19,6 @@ namespace WpfApp1.Model
         public string Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Operacii> Operaciis { get; set; }
+        public virtual ICollection<Prog> Prog { get; set; }
     }
 }

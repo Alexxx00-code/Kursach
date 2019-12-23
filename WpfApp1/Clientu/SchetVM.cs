@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL;
+using WpfApp1.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -12,25 +12,25 @@ using System.Windows;
 
 namespace WpfApp1.Clientu
 {
-    class SchetVM : Controler
+    class SchetVM : Base
     {
-        ClientWindow window;
+        ClientWindowVM window;
         
         public ObservableCollection<Schet> schets { get; set; }        
-        public ObservableCollection<Operacii> operaciis { get; set; }
+        
         private Client user;
 
-        BankEntities bd;
+        Bank bd;
         int ID;
-        public SchetVM(int id, ClientWindow window):base(id,window)
+        public SchetVM(int id, ClientWindowVM window, Bank bank)
         {
-            bd = new BankEntities();
+            bd = bank;
             ID = id;
             user = bd.Client.Find(id);
-            schets = new ObservableCollection<Schet>(user.Schet.Where(i => (i.Prog == null)&&(i.Status==true)));            
             
+            schets = new ObservableCollection<Schet>(user.Schet.Where(i => (i.Prog == null)&&(i.Status==true)));
+            bd = bank;
             this.window = window;
-                  
         }
         public RelayCommand New
         {
@@ -40,7 +40,7 @@ namespace WpfApp1.Clientu
                 {
                     try
                     {
-                        window.Page.Content = new New_Schet(ID, window);
+                        window.window.Page.Content = new New_Schet(ID, window,bd);
                     }
                     catch (Exception ex)
                     {
@@ -69,7 +69,25 @@ namespace WpfApp1.Clientu
                 });
             }
 
+
         }
-        
+        Schet selected;
+        public Schet Selected
+        {
+            get { return selected; }
+            set
+            {
+                selected = value;
+                OnPropertyChanged("Selected");
+            }
+        }
+        public void UPD()
+        {
+            schets.Clear();
+            foreach(Schet schet in user.Schet.Where(i => (i.Prog == null) && (i.Status == true)))
+            {
+                schets.Add(schet);
+            }
+        }
     }
 }

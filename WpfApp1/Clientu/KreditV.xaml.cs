@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Model;
 
 namespace WpfApp1.Clientu
 {
@@ -20,10 +21,16 @@ namespace WpfApp1.Clientu
     /// </summary>
     public partial class KreditV : Page
     {
-        public KreditV(int id, ClientWindow window)
+        KreditVM kreditVM;
+        public KreditV(int id, ClientWindowVM window,Bank bank)
         {
             InitializeComponent();
-            DataContext = new KreditVM(id, window);
+            kreditVM = new KreditVM(id, window, bank);
+            DataContext = kreditVM;
+        }
+        public void UPD()
+        {
+            kreditVM.UPD();
         }
     }
 }

@@ -9,22 +9,22 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" ></RowDefinition>
-            <RowDefinition Height="Auto" ></RowDefinition>
-            <RowDefinition Height="Auto" ></RowDefinition>
-            <RowDefinition Height="Auto" ></RowDefinition>
-            <RowDefinition Height="Auto" ></RowDefinition>
-            <RowDefinition Height="Auto" ></RowDefinition>
-            <RowDefinition Height="Auto" ></RowDefinition>
-            <RowDefinition Height="Auto" ></RowDefinition>
+            <RowDefinition Height="*" ></RowDefinition>
+            <RowDefinition Height="*" ></RowDefinition>
+            <RowDefinition Height="*" ></RowDefinition>
+            <RowDefinition Height="*" ></RowDefinition>
+            <RowDefinition Height="*" ></RowDefinition>
+            <RowDefinition Height="*" ></RowDefinition>
+            <RowDefinition Height="*" ></RowDefinition>
+            <RowDefinition Height="*" ></RowDefinition>
            
 
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.2*"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
             <ColumnDefinition Width="0.2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Button Grid.Row="7" Content="ОК" Grid.Column="2" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="50" Command="{Binding OK}"  />

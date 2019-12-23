@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using WpfApp1.Model;
 namespace WpfApp1.Clientu
 {
     /// <summary>
@@ -19,10 +19,10 @@ namespace WpfApp1.Clientu
     /// </summary>
     public partial class New_vklad : Page
     {
-        public New_vklad(int id, ClientWindow window)
+        public New_vklad(int id, ClientWindowVM window,Bank bank)
         {
             InitializeComponent();
-            DataContext = new New_VkladVM(id, window);
+            DataContext = new New_VkladVM(id, window,bank);
         }
     }
     

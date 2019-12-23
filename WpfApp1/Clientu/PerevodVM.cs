@@ -5,98 +5,107 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows;
-using DAL;
+using WpfApp1.Model;
 using System.Collections.ObjectModel;
 
 namespace WpfApp1.Clientu
 {
-    class PerevodVM : Controler
+    class PerevodVM : Base
     {
-        ClientWindow window;
-
-
+        ClientWindowVM window;        
         public ObservableCollection<Schet> schets_out { get; set; }
         public ObservableCollection<Schet> schets_in { get; set; }
-
         private Client user;
-
-        BankEntities bd;
+        Bank bd;
         int ID;
-        public PerevodVM(int id, ClientWindow window):base(id,window)
+        public PerevodVM(int id, ClientWindowVM window, Bank bank)
         {
-            bd = new BankEntities();
+            bd = bank;
             ID = id;
             user = bd.Client.Find(id);
             schets_out = new ObservableCollection<Schet>(user.Schet.Where(i => i.Status == true));
             schets_in = new ObservableCollection<Schet>(user.Schet.Where(i => i.Status == true));
             this.window = window;
         }
-        public PerevodVM(int id, ClientWindow window,Schet schet) : base(id, window)
+        public PerevodVM(int id, ClientWindowVM window,Schet schet, Bank bank) 
         {
-            bd = new BankEntities();
+            bd = bank;
             ID = id;
             user = bd.Client.Find(id);
             schets_out = new ObservableCollection<Schet>(user.Schet.Where(i=>i.Status == true));
             schets_in = new ObservableCollection<Schet>(user.Schet.Where(i => i.Status == true));
             this.window = window;
-
         }
-     
-        public RelayCommand Changed
+        bool select_vnschet = false;
+        public bool Select_vnschet
         {
-            get
+            get { return select_vnschet; }
+            set
             {
-                return new RelayCommand(obj =>
-                {
-                    try
-                    {
-                        
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                });
+                select_vnschet = value;
+                OnPropertyChanged("Select_vnschet");
             }
-
         }
+
+        bool select_vnbank = false;
+        public bool Select_vnbank
+        {
+            get { return select_vnbank; }
+            set
+            {
+                select_vnbank = value;
+                OnPropertyChanged("Select_vnbank");
+            }
+        }
+
+        int? schet_vibr;
+        public int? Schet_vibr
+        {
+            get { return schet_vibr; }
+            set
+            {
+                schet_vibr = value;                
+                SelectedIn = null;
+                OnPropertyChanged("Schet_vibr");
+                
+            }
+        }
+
         Schet selectedOut;
         public Schet SelectedOut
         {
             get { return selectedOut; }
             set
-            {
-                if (SelectedIn != value)
-                {
+            {               
                     selectedOut = value;
-                    OnPropertyChanged("SelectedOut");
-                }
+                    OnPropertyChanged("SelectedOut");                
             }
         }
+
         Schet selectedIn;
         public Schet SelectedIn
         {
             get { return selectedIn; }
             set
             {
-                if (SelectedOut != value)
-                {
-                    selectedIn = value;
-                    OnPropertyChanged("SelectedIn");
-                }
+                Select_vnschet = false;
+                Select_vnbank = false;
+                selectedIn = value;
+                OnPropertyChanged("SelectedIn");
             }
         }
-        decimal sumOut=0;
+
+        decimal Sum=0;
         public decimal SumOut
         {
-            get { return sumOut; }
+            get { return Sum; }
             set
             {
                 try
                 {
-                    sumOut = value;
-                    if (selectedOut.Valute_FK != selectedIn.Valute_FK)
-                        SumIn = value-value * (decimal)selectedIn.Valute.Otnoshenie_k_rub_prod / (decimal)selectedIn.Valute.Otnoshenie_k_rub_pok ;
+                    Sum = value;
+                    if (selectedOut.ValuteID != selectedIn.ValuteID)
+                        SumIn = value * (decimal)selectedIn.Valute.Otnoshenie_k_rub_pok / (decimal)selectedOut.Valute.Otnoshenie_k_rub_prod-value ;
                     
                     OnPropertyChanged("SumOut");
                 }
@@ -106,17 +115,18 @@ namespace WpfApp1.Clientu
                 }                
             }
         }
+
         decimal sumIn=0;
         public decimal SumIn
         {
             get { return sumIn; }
             set
-            {
-                
+            {                
                 sumIn = value;
                 OnPropertyChanged("SumIn");
             }
         }
+
         public RelayCommand OK
         {
             get
@@ -125,13 +135,40 @@ namespace WpfApp1.Clientu
                 {
                     try
                     {
-                        if (SelectedOut.Sum - (SumOut + SumIn) > 0)
-                        {
-                            TransferManedger.Perevod_vnutri(SelectedOut, SelectedIn, SumOut, bd);
-                            window.Page.Content = new Perevod(ID, window);
-                        }
+                        if (SelectedOut != null)
+                            if (SelectedOut.Sum - (SumOut + SumIn) >= 0)
+                                if ((select_vnschet==false)&&(select_vnbank==false))
+                                {
+                                    if (SelectedIn != null)
+                                    {
+                                        TransferManedger.Perevod_vnutri(SelectedOut, SelectedIn, SumOut, bd);
+                                        UPD();
+                                    }
+                                    else
+                                        MessageBox.Show("Не выбран счёт зачисления");
+                                }
+                                else
+                                {
+                                    if (schet_vibr!=null)
+                                    {
+                                        if (select_vnschet == false)
+                                        {
+                                            TransferManedger.Perevod_vneshniy_Bank(SelectedOut, (int)schet_vibr, SumOut, bd);
+                                            UPD();
+                                        }
+                                        else
+                                        {
+                                            TransferManedger.Perevod_vneshniy_Schet(SelectedOut, (int)schet_vibr, SumOut, bd);
+                                            UPD();
+                                        }
+                                    }
+                                    else
+                                        MessageBox.Show("Введите номер счета");
+                                }
+                            else
+                                MessageBox.Show("Не хватает средств");
                         else
-                            MessageBox.Show("Не хватает средств");
+                            MessageBox.Show("Не выбран счёт, с которого производится снятие");
                     }
                     catch (Exception ex)
                     {
@@ -139,8 +176,8 @@ namespace WpfApp1.Clientu
                     }
                 });
             }
-
         }
+        /*
         public RelayCommand Cansel
         {
             get
@@ -157,6 +194,23 @@ namespace WpfApp1.Clientu
                     }
                 });
             }
+        }*/
+        public void UPD()
+        {
+            schets_in.Clear();
+            schets_out.Clear();
+            foreach (Schet schet in user.Schet)
+            {
+                schets_in.Add(schet);
+                schets_out.Add(schet);
+            }
+            SumIn = 0;
+            SumOut = 0;
+            SelectedIn = null;
+            SelectedOut = null;
+            Schet_vibr = null;
+            Select_vnbank = false;
+            Select_vnschet = false;
 
         }
     }

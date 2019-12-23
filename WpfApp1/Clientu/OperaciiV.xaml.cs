@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Model;
 
 namespace WpfApp1.Clientu
 {
@@ -20,10 +21,16 @@ namespace WpfApp1.Clientu
     /// </summary>
     public partial class OperaciiV : Page
     {
-        public OperaciiV(int id, ClientWindow window)
+        OperaciiVM OperaciiVM;
+        public OperaciiV(int id, ClientWindowVM window,Bank bank)
         {
             InitializeComponent();
-            DataContext = new OperaciiVM(id, window);
+            OperaciiVM = new OperaciiVM(id, window, bank);
+            DataContext = OperaciiVM;
+        }
+        public void UPD()
+        {
+            OperaciiVM.UPD();
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL;
+using WpfApp1.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -14,14 +14,14 @@ namespace WpfApp1.Clientu
 {
     class OperaciiVM
     {
-        public ObservableCollection<Operacii> operaciis { get; set; }        
-        ClientWindow window;
+        public ObservableCollection<Operacii> operaciis { get; set; }
+        ClientWindowVM window;
         private Client user;
-        BankEntities bd;
+        Bank bd;
 
-        public OperaciiVM(int id,ClientWindow window)
+        public OperaciiVM(int id, ClientWindowVM window,Bank bank)
         {
-            bd = new BankEntities();
+            bd = bank;
             user = bd.Client.Find(id);
             operaciis = new ObservableCollection<Operacii>();
             foreach (Schet s in user.Schet)
@@ -35,6 +35,18 @@ namespace WpfApp1.Clientu
                     operaciis.Add(o);
                 }
             }
+
+        }
+        public void UPD()
+        {
+            
+            operaciis.Clear();
+            foreach (Operacii operacii in bd.Operacii)
+            {
+                operaciis.Add(operacii);
+               
+            }
+           
 
         }
     }

@@ -87,6 +87,8 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Text.Encodings.Web, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encodings.Web.4.6.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
@@ -153,24 +155,34 @@
       <DependentUpon>ClientWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controler.cs" />
-    <Compile Include="MainWindowVM.cs" />
-    <Compile Include="Model\ClientBLL.cs" />
-    <Compile Include="Model\KreditBLL.cs" />
-    <Compile Include="Model\OperaciiBLL.cs" />
-    <Compile Include="Model\ProgramBLL.cs" />
-    <Compile Include="Model\SchetBLL.cs" />
-    <Compile Include="Model\SotrudnicBLL.cs" />
-    <Compile Include="Model\StatusBLL.cs" />
+    <Compile Include="ClientWindowVM.cs" />
+    <Compile Include="Model\Bank.cs" />
+    <Compile Include="Model\Client.cs" />
+    <Compile Include="Model\C__MigrationHistory.cs" />
+    <Compile Include="Model\Operaciis.cs" />
+    <Compile Include="Model\Progs.cs" />
+    <Compile Include="Model\Schet.cs" />
+    <Compile Include="Model\Sotrudnics.cs" />
+    <Compile Include="Model\Status.cs" />
+    <Compile Include="Model\Status_Scheta.cs" />
+    <Compile Include="Model\sysdiagrams.cs" />
+    <Compile Include="Model\Tips.cs" />
     <Compile Include="Model\Tip_operacii.cs" />
-    <Compile Include="Model\Tip_program.cs" />
-    <Compile Include="Model\ValuteBLL.cs" />
-    <Compile Include="Model\VkladBLL.cs" />
+    <Compile Include="Model\Valutes.cs" />
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="SotrudnicWindow.xaml.cs">
+      <DependentUpon>SotrudnicWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SotrudnicWindowVM.cs" />
+    <Compile Include="Sotrudnic\ClientV.xaml.cs">
+      <DependentUpon>ClientV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sotrudnic\ClientVM.cs" />
     <Compile Include="TransferManedger.cs" />
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Сотрудику\Info_Client.xaml.cs">
+    <Compile Include="Sotrudnic\Info_Client.xaml.cs">
       <DependentUpon>Info_Client.xaml</DependentUpon>
     </Compile>
     <Compile Include="Clientu\New_Schet.xaml.cs">
@@ -182,14 +194,11 @@
     <Compile Include="Clientu\Perevod.xaml.cs">
       <DependentUpon>Perevod.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Сотрудику\New_Prog.xaml.cs">
+    <Compile Include="Sotrudnic\New_Prog.xaml.cs">
       <DependentUpon>New_Prog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Сотрудику\New_Client.xaml.cs">
+    <Compile Include="Sotrudnic\New_Client.xaml.cs">
       <DependentUpon>New_Client.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Сотрудику\Sotrudnic.xaml.cs">
-      <DependentUpon>Sotrudnic.xaml</DependentUpon>
     </Compile>
     <Compile Include="Clientu\New_vklad.xaml.cs">
       <DependentUpon>New_vklad.xaml</DependentUpon>
@@ -218,11 +227,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SotrudnicWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sotrudnic\ClientV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Сотрудику\Info_Client.xaml">
+    <Page Include="Sotrudnic\Info_Client.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -242,15 +259,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Сотрудику\New_Prog.xaml">
+    <Page Include="Sotrudnic\New_Prog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Сотрудику\New_Client.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Сотрудику\Sotrudnic.xaml">
+    <Page Include="Sotrudnic\New_Client.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -277,6 +290,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -285,12 +299,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{ed70f7e7-0daf-4a17-8368-fe5d7fe987d4}</Project>
-      <Name>DAL</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

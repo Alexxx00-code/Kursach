@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL;
+using WpfApp1.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -12,24 +12,23 @@ using System.Windows;
 
 namespace WpfApp1.Clientu
 {
-    class New_VkladVM : Controler
-    {
-        
+    class New_VkladVM : Base
+    {        
         int ID;
-        ClientWindow window;
+        ClientWindowVM window;
         private Client user;
         public ObservableCollection<Prog> Program { get; set; }
-        BankEntities bd;
+        Bank bd;
         public ObservableCollection<Valute> Valutes { get; set; }
         public ObservableCollection<Schet> Schets { get; set; }
 
-        public New_VkladVM(int id, ClientWindow window) : base(id, window)
+        public New_VkladVM(int id, ClientWindowVM window,Bank bank) 
         {
-            bd = new BankEntities();
+            bd = bank;
             ID = id;
             user = bd.Client.Find(id);
             this.window = window;            
-            Program = new ObservableCollection<Prog>(bd.Prog.Where(i=>i.Tip_FK==2));
+            Program = new ObservableCollection<Prog>(bd.Prog.Where(i=>i.TipID==2));
             Valutes = new ObservableCollection<Valute>(bd.Valute);
             Schets = new ObservableCollection<Schet>(user.Schet.Where(i => (i.Prog == null) && (i.Status == true)));
         }
@@ -63,17 +62,17 @@ namespace WpfApp1.Clientu
                 OnPropertyChanged("SelectedSchet");
             }
         }
-        decimal sum1 = 0;
-        public decimal Sum1
+        decimal sum = 0;
+        public decimal Sum
         {
-            get { return sum1; }
+            get { return sum; }
             set
             {
                 try
                 {
-                    sum1 = value;
-                    if (SelectedSchet.Valute_FK != SelectedValute.ID)
-                        sum1 = value - value * (decimal)SelectedSchet.Valute.Otnoshenie_k_rub_prod / (decimal)SelectedValute.Otnoshenie_k_rub_pok;
+                    sum = value;
+                    if (SelectedSchet.ValuteID != SelectedValute.ID)
+                        sum = value - value * (decimal)SelectedSchet.Valute.Otnoshenie_k_rub_prod / (decimal)SelectedValute.Otnoshenie_k_rub_pok;
 
                     OnPropertyChanged("SumOut");
                 }
@@ -91,10 +90,10 @@ namespace WpfApp1.Clientu
                 {
                     try
                     {
-                        if (SelectedSchet.Sum - Sum1 > 0)
+                        if (SelectedSchet.Sum - Sum > 0)
                         {
-                            TransferManedger.Create_Vklad(user, SelectedValute, SelectedProgram, Sum1, SelectedSchet, bd);
-                            window.Page.Content = new VkladV(ID, window);
+                            TransferManedger.Create_Vklad(user, SelectedValute, SelectedProgram, Sum, SelectedSchet, bd);
+                            window.vklad();
                         }
                         else
                             MessageBox.Show("Не хватает средств");

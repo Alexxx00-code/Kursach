@@ -10,18 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApp1
+namespace WpfApp1.Sotrudnic
 {
     /// <summary>
-    /// Логика взаимодействия для Sotrudnic.xaml
+    /// Логика взаимодействия для ClientV.xaml
     /// </summary>
-    public partial class Sotrudnic : Window
+    public partial class ClientV : Page
     {
-        public Sotrudnic()
+        public ClientV()
         {
             InitializeComponent();
+            DataContext=
         }
     }
 }

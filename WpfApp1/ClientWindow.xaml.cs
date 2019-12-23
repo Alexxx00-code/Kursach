@@ -24,8 +24,8 @@ namespace WpfApp1
         public ClientWindow()
         {
             InitializeComponent();
-            Page.Content = new SchetV(Client_ID, this);
-            DataContext = new MainWindowVM(Client_ID, this);
+            
+            DataContext = new ClientWindowVM(Client_ID, this);
 
             
         }

@@ -23,7 +23,7 @@ namespace DAL
         public int ID { get; set; }
         public string Name { get; set; }
         public double Procent { get; set; }
-        public int Tip_FK { get; set; }
+        public int TipID { get; set; }
         public int dlitel_day_min { get; set; }
         public int dlitel_day_max { get; set; }
         public decimal min_Sum { get; set; }

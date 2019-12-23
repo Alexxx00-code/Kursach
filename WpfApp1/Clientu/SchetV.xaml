@@ -48,10 +48,10 @@
                     
                  SelectedItem="{Binding Selected}" CanUserAddRows="False" IsReadOnly="True" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="№ счёта"  Binding="{Binding Nschet}" />
-                <DataGridTextColumn Header="Дата создания"  Binding="{Binding Data_sozd}"/>
-                <DataGridTextColumn Header="Сумма"  Binding="{Binding Sum}"/>
-                <DataGridTextColumn Header="Валюта"  Binding="{Binding Valute.Name}"/>
+                <DataGridTextColumn Width="*" Header="№ счёта"  Binding="{Binding Nschet}" />
+                <DataGridTextColumn Width="*" Header="Дата создания"   Binding="{Binding Data_sozd, StringFormat=dd:MM:yyyy }"/>
+                <DataGridTextColumn Width="*" Header="Сумма"  Binding="{Binding Sum}"/>
+                <DataGridTextColumn Width="*" Header="Валюта"  Binding="{Binding Valute.Name}"/>
 
             </DataGrid.Columns>
 

@@ -6,19 +6,29 @@ namespace WpfApp1.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Tip_operacii
+    public partial class Client
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tip_operacii()
+        public Client()
         {
-            Operaciis = new HashSet<Operacii>();
+            Schet = new HashSet<Schet>();
         }
 
         public int ID { get; set; }
 
-        public string Name { get; set; }
+        public string FIO { get; set; }
+
+        public int Npasporta { get; set; }
+
+        public int Serpasporta { get; set; }
+
+        public DateTime Data_rog { get; set; }
+
+        public string login { get; set; }
+
+        public string pasworld { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Operacii> Operaciis { get; set; }
+        public virtual ICollection<Schet> Schet { get; set; }
     }
 }

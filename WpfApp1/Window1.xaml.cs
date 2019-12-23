@@ -22,7 +22,7 @@ namespace WpfApp1
         public Window1()
         {
             InitializeComponent();
-            DataContext = new Controler(1,this);
+           
         }
     }
 }

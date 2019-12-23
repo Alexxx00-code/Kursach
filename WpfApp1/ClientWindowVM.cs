@@ -5,17 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using WpfApp1.Clientu;
+using WpfApp1.Model;
 
 namespace WpfApp1
 {
-    class MainWindowVM
+    public class ClientWindowVM 
     {
         int ID;
-        ClientWindow window;
-        public MainWindowVM(int id, ClientWindow window )
+        public ClientWindow window;
+        Bank bd;
+        SchetV schetV;
+        KreditV kreditV;
+        OperaciiV operaciiV;
+        VkladV vkladV;
+        Perevod perevodV;
+        public ClientWindowVM(int id, ClientWindow window )
         {
             ID = id;
             this.window = window;
+            bd = new Bank();
         }
         public RelayCommand SchetViev
         {
@@ -25,9 +33,7 @@ namespace WpfApp1
                 {
                     try
                     {
-                        
-                        window.Page.Content = new SchetV(ID,window);
-
+                        schet();
                     }
                     catch (Exception ex)
                     {
@@ -35,7 +41,13 @@ namespace WpfApp1
                     }
                 });
             }
-
+        }
+        public void schet()
+        {
+            if (schetV == null)
+                schetV = new SchetV(ID, this, bd);
+            schetV.UPD();
+            window.Page.Content = schetV;
         }
         public RelayCommand KreditViev
         {
@@ -45,9 +57,7 @@ namespace WpfApp1
                 {
                     try
                     {
-
-                        window.Page.Content = new KreditV(ID, window);
-
+                        kredit();
                     }
                     catch (Exception ex)
                     {
@@ -56,6 +66,13 @@ namespace WpfApp1
                 });
             }
 
+        }
+        public void kredit()
+        {
+            if (kreditV == null)
+                kreditV = new KreditV(ID, this, bd);
+            kreditV.UPD();
+            window.Page.Content = kreditV;
         }
         public RelayCommand VkladViev
         {
@@ -65,9 +82,7 @@ namespace WpfApp1
                 {
                     try
                     {
-
-                        window.Page.Content = new VkladV(ID, window);
-
+                        vklad();
                     }
                     catch (Exception ex)
                     {
@@ -77,7 +92,13 @@ namespace WpfApp1
             }
 
         }
-        
+        public void vklad()
+        {
+            if (vkladV == null)
+                vkladV = new VkladV(ID, this, bd);
+            vkladV.UPD();
+            window.Page.Content = vkladV;
+        }
         public RelayCommand OperaciiViev
         {
             get
@@ -86,9 +107,7 @@ namespace WpfApp1
                 {
                     try
                     {
-
-                        window.Page.Content = new OperaciiV(ID, window);
-
+                        operacii();
                     }
                     catch (Exception ex)
                     {
@@ -97,6 +116,13 @@ namespace WpfApp1
                 });
             }
 
+        }
+        public void operacii()
+        {
+            if (operaciiV == null)
+                operaciiV = new OperaciiV(ID, this, bd);
+            operaciiV.UPD();
+            window.Page.Content = operaciiV;
         }
         public RelayCommand Perevod
         {
@@ -106,7 +132,7 @@ namespace WpfApp1
                 {
                     try
                     {
-                        window.Page.Content = new Perevod(ID, window);
+                        perevod();
                     }
                     catch (Exception ex)
                     {
@@ -114,7 +140,15 @@ namespace WpfApp1
                     }
                 });
             }
-
         }
+        
+        public void perevod()
+        {
+            if (perevodV == null)
+                perevodV = new Perevod(ID, this, bd);
+            perevodV.UPD();
+            window.Page.Content = perevodV;
+        }
+
     }
 }

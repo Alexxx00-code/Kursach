@@ -29,13 +29,13 @@ namespace DAL.Repository
         {
             Operacii o = db.Operacii.Find(operacii.ID);
             o.Date = operacii.Date;
-            o.In_FK = operacii.In_FK;
-            o.Out_FK = operacii.Out_FK;
-            o.Sotrudnic_FK = operacii.Sotrudnic_FK;
-            o.Status_FK = operacii.Status_FK;
+            o.InID = operacii.InID;
+            o.OutID = operacii.OutID;
+            o.SotrudnicID = operacii.SotrudnicID;
+            o.StatusID = operacii.StatusID;
             o.Sum_In = operacii.Sum_In;
             o.Sum_Out = operacii.Sum_Out;
-            o.Tip_operazii_FK = operacii.Tip_operazii_FK;
+            o.Tip_operaziiID = operacii.Tip_operaziiID;
             o.Vneshcniy_Nscheta = operacii.Vneshcniy_Nscheta;
         }
     }

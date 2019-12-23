@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Model;
 
 namespace WpfApp1.Clientu
 {
@@ -20,10 +21,18 @@ namespace WpfApp1.Clientu
     /// </summary>
     public partial class SchetV : Page
     {
-        public SchetV(int id, ClientWindow window)
+        SchetVM schetVM;
+        public SchetV(int id, ClientWindowVM window,Bank bank)
         {
             InitializeComponent();
-            DataContext = new SchetVM(id,window);
+            schetVM = new SchetVM(id, window, bank);
+            DataContext = schetVM;
+            Binding binding = new Binding();
+            binding.ElementName = "";
+        }
+        public void UPD()
+        {
+            schetVM.UPD();
         }
     }
 }

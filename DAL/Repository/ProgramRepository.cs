@@ -33,7 +33,7 @@ namespace DAL.Repository
             p.dlitel_day_max = prog.dlitel_day_max;
             p.Name = prog.Name;
             p.Procent = prog.Procent;
-            p.Tip_FK = p.Tip_FK;
+            p.TipID = p.TipID;
         }
     }
 }

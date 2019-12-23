@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Model;
 
 namespace WpfApp1.Clientu
 {
@@ -20,10 +21,16 @@ namespace WpfApp1.Clientu
     /// </summary>
     public partial class VkladV : Page
     {
-        public VkladV(int id, ClientWindow window)
+        VkladVM VkladVM;
+        public VkladV(int id, ClientWindowVM window,Bank bank)
         {
             InitializeComponent();
-            DataContext = new VkladVM(id, window);
+            VkladVM = new VkladVM(id, window,bank);
+            DataContext = VkladVM;
+        }
+        public void UPD()
+        {
+            VkladVM.UPD();
         }
     }
 }

@@ -11,19 +11,18 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using WpfApp1.Model;
 
-namespace WpfApp1.Clientu
+namespace WpfApp1
 {
     /// <summary>
-    /// Логика взаимодействия для New_Schet.xaml
+    /// Логика взаимодействия для SotrudnicWindow.xaml
     /// </summary>
-    public partial class New_Schet : Page
+    public partial class SotrudnicWindow : Window
     {
-        public New_Schet(int id,ClientWindowVM window,Bank bank)
+        public SotrudnicWindow()
         {
             InitializeComponent();
-            DataContext = new New_SchetVM(id,window,bank);
+            DataContext = new SotrudnicWindowVM(1);
         }
     }
 }

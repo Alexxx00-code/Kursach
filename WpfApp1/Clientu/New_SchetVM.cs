@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL;
+using WpfApp1.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -13,18 +13,18 @@ using WpfApp1;
 
 namespace WpfApp1.Clientu
 {
-    class New_SchetVM : Controler
+    class New_SchetVM : Base
     {
         
         int ID;
-        ClientWindow window;
+        ClientWindowVM window;
         private Client user;
         public ObservableCollection<Valute> Valutes { get; set; }
-        BankEntities bd;
+        Bank bd;
 
-        public New_SchetVM(int id,ClientWindow window): base(id,window)
+        public New_SchetVM(int id, ClientWindowVM window,Bank bank)
         {
-            bd = new BankEntities();
+            bd = bank;
             ID = id;
             user = bd.Client.Find(id);
             this.window = window;
@@ -41,7 +41,7 @@ namespace WpfApp1.Clientu
                     try
                     {
                         TransferManedger.Create_Schet(user, SelectedValute,bd);
-                        window.Page.Content = new SchetV(ID, window);
+                        window.schet();
                     }
                     catch (Exception ex)
                     {
@@ -59,7 +59,7 @@ namespace WpfApp1.Clientu
                 {
                     try
                     {
-                        window.Page.Content = new SchetV(ID, window);
+                        window.schet();
                     }
                     catch (Exception ex)
                     {

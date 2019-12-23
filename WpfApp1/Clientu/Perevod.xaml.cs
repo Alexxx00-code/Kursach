@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using DAL;
+using WpfApp1.Model;
 
 namespace WpfApp1.Clientu
 {
@@ -20,15 +20,24 @@ namespace WpfApp1.Clientu
     /// </summary>
     public partial class Perevod : Page
     {
-        public Perevod(int id, ClientWindow window)
+        PerevodVM perevod;
+        public Perevod(int id, ClientWindowVM window,Bank bank)
         {
             InitializeComponent();
-            DataContext = new PerevodVM(id, window);
+            perevod = new PerevodVM(id, window, bank);
+            DataContext = perevod;
+
         }
-        public Perevod(int id, ClientWindow window,Schet schet)
+        public Perevod(int id, ClientWindowVM window,Schet schet, Bank bank)
         {
             InitializeComponent();
-            DataContext = new PerevodVM(id, window, schet);
+            perevod = new PerevodVM(id, window, schet, bank);
+            DataContext = perevod;
         }
+        public void UPD()
+        {
+            perevod.UPD();
+        }
+
     }
 }

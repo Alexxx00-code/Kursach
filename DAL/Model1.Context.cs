@@ -12,10 +12,12 @@ namespace DAL
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
-    public partial class BankEntities : DbContext
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+
+    public partial class BankEntities1 : DbContext
     {
-        public BankEntities()
+        public BankEntities1()
             : base("name=BankEntities")
         {
         }
@@ -36,5 +38,7 @@ namespace DAL
         public virtual DbSet<Tip> Tip { get; set; }
         public virtual DbSet<Tip_operacii> Tip_operacii { get; set; }
         public virtual DbSet<Valute> Valute { get; set; }
+
+        
     }
 }

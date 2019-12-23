@@ -6,19 +6,23 @@ namespace WpfApp1.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Tip_operacii
+    public partial class Valute
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tip_operacii()
+        public Valute()
         {
-            Operaciis = new HashSet<Operacii>();
+            Schets = new HashSet<Schet>();
         }
 
         public int ID { get; set; }
 
         public string Name { get; set; }
 
+        public double Otnoshenie_k_rub_prod { get; set; }
+
+        public double Otnoshenie_k_rub_pok { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Operacii> Operaciis { get; set; }
+        public virtual ICollection<Schet> Schets { get; set; }
     }
 }

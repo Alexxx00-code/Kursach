@@ -28,11 +28,11 @@ namespace DAL.Repository
         public void UPD(Schet schet)
         {
             Schet s = db.Schet.Find(schet.Nschet);
-            s.Client_FK = schet.Client_FK;
+            s.ClientID = schet.ClientID;
             s.Data_sozd = schet.Data_sozd;
             s.Sum = schet.Sum;
-            s.Valute_FK = schet.Valute_FK;
-            s.Prog_FK = schet.Prog_FK;
+            s.ValuteID = schet.ValuteID;
+            s.ProgID = schet.ProgID;
         }
     }
 }
