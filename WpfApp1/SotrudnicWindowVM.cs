@@ -16,6 +16,8 @@ namespace WpfApp1
         int ID;
         ClientV clientV;
         Operacii_na_potvV Operacii;
+        OperaciiV OperaciiV;
+        ProgramV ProgramV;
         public SotrudnicWindow window;
         public SotrudnicWindowVM(int id, SotrudnicWindow window)
         {
@@ -72,7 +74,7 @@ namespace WpfApp1
             Operacii.UPD();
             window.Page.Content = Operacii;
         }
-        public RelayCommand ProgramViev
+        public RelayCommand VkladViev
         {
             get
             {
@@ -91,10 +93,34 @@ namespace WpfApp1
         }
         public void program()
         {
-            if (Operacii == null)
-                Operacii = new Operacii_na_potvV(ID, this, bd);
-            Operacii.UPD();
-            window.Page.Content = Operacii;
+            if (ProgramV == null)
+                ProgramV = new ProgramV(ID, this, bd);
+            ProgramV.UPD();
+            window.Page.Content = ProgramV;
+        }
+        public RelayCommand OperaciiAllViev
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    try
+                    {
+                        operaciiall();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                });
+            }
+        }
+        public void operaciiall()
+        {
+            if (OperaciiV == null)
+                OperaciiV = new OperaciiV(ID, this, bd);
+            OperaciiV.UPD();
+            window.Page.Content = OperaciiV;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace WpfApp1.Sotrudnic
         Bank bank;
         public ObservableCollection<Prog> progs { get; set; }
         public Prog selectedProg;
-        Prog SelectedProg
+        public Prog SelectedProgram
         {
             get
             {
@@ -25,7 +25,7 @@ namespace WpfApp1.Sotrudnic
             set
             {
                 selectedProg = value;
-                OnPropertyChanged("SelectedProg");
+                OnPropertyChanged("SelectedProgram");
             }
         }
         public ProgramVM(int id, SotrudnicWindowVM window, Bank bank)
@@ -61,7 +61,7 @@ namespace WpfApp1.Sotrudnic
                 {
                     try
                     {
-                        window.window.Page.Content = new New_ProgV(ID, window, bank, SelectedProg);
+                        window.window.Page.Content = new New_ProgV(ID, window, bank, SelectedProgram);
                     }
                     catch (Exception ex)
                     {

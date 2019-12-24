@@ -16,7 +16,7 @@ namespace WpfApp1.Sotrudnic
         SotrudnicWindowVM window;
         Bank bank;
         public ObservableCollection<Operacii> operaciis { get; set; }
-        Operacii selectedOperacii;
+        public Operacii selectedOperacii;
         public Operacii SelectedOperacii
         {
             get
@@ -26,6 +26,15 @@ namespace WpfApp1.Sotrudnic
             set
             {
                 selectedOperacii = value;
+                if ((selectedOperacii!=null)&&(selectedOperacii.Tip_operacii.Name == "Перевод"))
+                    Page.Page.Content = new Rassmotreniy_perevodV(ID, window, selectedOperacii, bank);
+                else
+                {
+                    if ((selectedOperacii != null)&& (selectedOperacii.Tip_operacii.Name == "Создание кредита"))
+                        Page.Page.Content = new Rassmotreniy_kreditV(ID, selectedOperacii, bank, window);
+                    else
+                        Page.Page.Content = new Rassmotreniy_vkladV(ID, selectedOperacii, bank, window);
+                }
                 OnPropertyChanged("SelectedOperacii");
             }
         }
@@ -34,7 +43,7 @@ namespace WpfApp1.Sotrudnic
             ID = id;
             this.bank = bank;
             this.window = window;
-            operaciis = new ObservableCollection<Operacii>(bank.Operacii.Where(i=>i.Tip_operacii.Name== "Ожидает выполнения"));
+            operaciis = new ObservableCollection<Operacii>(bank.Operacii.Where(i=>i.Status.Name== "Ожидает выполнения"));
             Page = page;
         }
         public RelayCommand Rassmotret
@@ -63,11 +72,11 @@ namespace WpfApp1.Sotrudnic
             }
 
         }
-
+        
         public void UPD()
         {
             operaciis.Clear();
-            foreach (Operacii operacii in bank.Operacii.Where(i => i.Tip_operacii.Name == "Ожидает выполнения"))
+            foreach (Operacii operacii in bank.Operacii.Where(i => i.Status.Name == "Ожидает выполнения"))
             {
                 operaciis.Add(operacii);
             }

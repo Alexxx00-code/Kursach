@@ -28,10 +28,13 @@ namespace WpfApp1.Clientu
             {
                 foreach (Operacii o in s.Operacii)
                 {
+                    //o.vibor = true;
                     operaciis.Add(o);
+
                 }
                 foreach (Operacii o in s.Operacii1)
                 {
+                   // o.vibor = true;
                     operaciis.Add(o);
                 }
             }
@@ -43,6 +46,7 @@ namespace WpfApp1.Clientu
             operaciis.Clear();
             foreach (Operacii operacii in bd.Operacii)
             {
+              //  operacii.vibor = true;
                 operaciis.Add(operacii);               
             }
         }

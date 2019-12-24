@@ -42,7 +42,7 @@
         <TextBlock Grid.Row="10" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">Пароль</TextBlock>
         <TextBox Grid.Row="11" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Pasworld}"/>
         <TextBlock Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">Дата рождения</TextBlock>
-        <Calendar Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" SelectedDate="{Binding Date}"/>
+        <DatePicker Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" SelectedDate="{Binding Date}"/>
         <Button Grid.Row="12" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"   Command="{Binding OK}">OK</Button>
     </Grid>
 </Page>

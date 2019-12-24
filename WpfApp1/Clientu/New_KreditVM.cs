@@ -147,7 +147,7 @@ namespace WpfApp1.Clientu
                                 prog.min_Sum = sum_m;
                                 prog.Name = " ";
                                 TransferManedger.Create_Kredit(SelectedSchet, prog, Sum, bd, selectedValute, ID);
-                                window.vklad();
+                                window.kredit();
                             }
                             else MessageBox.Show("Не выбран счет начисления");
                         }

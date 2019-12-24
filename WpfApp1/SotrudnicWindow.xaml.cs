@@ -19,10 +19,10 @@ namespace WpfApp1
     /// </summary>
     public partial class SotrudnicWindow : Window
     {
-        public SotrudnicWindow()
+        public SotrudnicWindow(int id)
         {
             InitializeComponent();
-            DataContext = new SotrudnicWindowVM(1,this);
+            DataContext = new SotrudnicWindowVM(id,this);
         }
     }
 }

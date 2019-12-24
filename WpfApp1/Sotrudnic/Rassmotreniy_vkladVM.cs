@@ -21,14 +21,58 @@ namespace WpfApp1.Sotrudnic
             this.windowVM = windowVM;
             ID = id;
         }
-        double Pr
+        public double Pr
         {
             get
             {
                 return (DateTime.Now-operacii.Schet.Data_sozd).Days;
             }
+            set { }
            
         }
+        public int? InID
+        {
+            get
+            {
+                return operacii.InID;
+            }
+            set { }
+
+        }
+        public decimal? Sum_In
+        {
+            get
+            {
+                return operacii.Sum_In;
+            }
+            set { }
+
+        }
+        public int dlitel_day_min
+        {
+            get
+            {
+                return operacii.Schet1.Prog.dlitel_day_min;
+            }
+            set { }
+        }
+        public string Name
+        {
+            get
+            {
+                return operacii.Schet1.Valute.Name;
+            }
+            set { }
+        }
+        public string Name1
+        {
+            get
+            {
+                return operacii.Schet1.Prog.Name;
+            }
+            set { }
+        }
+        
         public RelayCommand OK
         {
             get

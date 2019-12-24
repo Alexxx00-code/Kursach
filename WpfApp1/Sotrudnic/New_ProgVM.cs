@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace WpfApp1.Sotrudnic
 {
-    class New_ProgVM
+    class New_ProgVM : Base
     {
         SotrudnicWindowVM windowVM;
         Bank bank;
@@ -22,6 +22,7 @@ namespace WpfApp1.Sotrudnic
             this.windowVM = windowVM;
             this.bank = bank;
             prog = new Prog();
+            prog.ID = 1;
         }
         public New_ProgVM(int id, SotrudnicWindowVM windowVM, Bank bank, Prog prog)
         {
@@ -42,6 +43,7 @@ namespace WpfApp1.Sotrudnic
                     {
                         if (add)
                         {
+                            prog.TipID = bank.Tip.Where(i => i.Name == "Вклад").FirstOrDefault().ID;
                             bank.Prog.Add(prog);
                             bank.SaveChanges();
                             windowVM.program();
@@ -60,6 +62,66 @@ namespace WpfApp1.Sotrudnic
                 });
             }
         }
+        public string Name
+        {
+            get
+            {
+                return prog.Name;
+            }
+            set
+            {
+                prog.Name = value;
+                OnPropertyChanged("Name");
+            }
+        }
 
+        public double Procent
+        {
+            get
+            {
+                return prog.Procent;
+            }
+            set
+            {
+                prog.Procent = value;
+                OnPropertyChanged("Procent");
+            }
+        }
+        public int dlitel_day_min
+        {
+            get
+            {
+                return prog.dlitel_day_min;
+            }
+            set
+            {
+                prog.dlitel_day_min = value;
+                OnPropertyChanged("dlitel_day_min");
+            }
+        }
+        public int dlitel_day_max
+        {
+            get
+            {
+                return prog.dlitel_day_max;
+            }
+            set
+            {
+                prog.dlitel_day_max = value;
+                OnPropertyChanged("dlitel_day_max");
+            }
+        }
+        public decimal min_Sum
+        {
+            get
+            {
+                return prog.min_Sum;
+            }
+            set
+            {
+                prog.min_Sum = value;
+                OnPropertyChanged("min_Sum");
+            }
+        }
     }
 }

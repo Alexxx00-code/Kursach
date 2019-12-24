@@ -21,6 +21,38 @@ namespace WpfApp1.Sotrudnic
             this.windowVM = windowVM;
             ID = id;
         }
+        public int? Vneshcniy_Nscheta
+        {
+            get
+            {
+                return operacii.Vneshcniy_Nscheta;
+            }
+            set
+            {
+            }
+        }
+        public decimal? Sum_In
+        {
+            get
+            {
+                return operacii.Sum_In;
+            }
+            set
+            {
+            }
+        }
+        public string Name
+        {
+            get
+            {
+                return operacii.Schet1.Valute.Name;
+            }
+            set
+            {
+            }
+        }
+        
+
         public RelayCommand OK
         {
             get

@@ -20,11 +20,11 @@ namespace WpfApp1
     /// </summary>
     public partial class ClientWindow : Window
     {
-        int Client_ID =3;
-        public ClientWindow()
+        int Client_ID;
+        public ClientWindow(int id)
         {
             InitializeComponent();
-            
+            Client_ID = id;
             DataContext = new ClientWindowVM(Client_ID, this);
 
             

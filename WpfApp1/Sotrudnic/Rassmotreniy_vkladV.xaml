@@ -11,26 +11,26 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="0.3*"></RowDefinition>
-            <RowDefinition Height="0.3*"></RowDefinition>
+            
         </Grid.RowDefinitions>
 
         <StackPanel TextElement.FontSize="15" Grid.Row="0"  HorizontalAlignment="Center" Orientation="Vertical">
-            <TextBlock>Перевод в другой банк</TextBlock>
+            <TextBlock>Закрытие вклада</TextBlock>
             <TextBlock>Номер счёта</TextBlock>
-            <TextBox IsReadOnly="True" Text="{Binding operacii.InID}"></TextBox>
+            <TextBox IsReadOnly="True" Text="{Binding InID}"></TextBox>
             <TextBlock>Сумма</TextBlock>
-            <TextBox IsReadOnly="True" Text="{Binding operacii.Sum_In}"></TextBox>
+            <TextBox IsReadOnly="True" Text="{Binding Sum_In}"></TextBox>
             <TextBlock>Название программы</TextBlock>
-            <TextBox IsReadOnly="True" Text="{Binding operacii.Schet.Prog.dlitel_day_min}"></TextBox>
+            <TextBox IsReadOnly="True" Text="{Binding  Name1}"></TextBox>
             <TextBlock>Валюта</TextBlock>
-            <TextBox IsReadOnly="True" Text="{Binding operacii.Schet.Valute.Name}"></TextBox>
+            <TextBox IsReadOnly="True" Text="{Binding Name}"></TextBox>
             <TextBlock>Минимальная длительность</TextBlock>
-            <TextBox IsReadOnly="True" Text="{Binding operacii.Schet.Prog.Name}"></TextBox>
+            <TextBox IsReadOnly="True" Text="{Binding dlitel_day_min}"></TextBox>
             <TextBlock>Прошло дней</TextBlock>
             <TextBox IsReadOnly="True" Text="{Binding Pr}"></TextBox>
+            <Button Margin="5" Width="100" Height="30"  Command="{Binding Can}" Grid.Row="1" >Отказать</Button>
+            <Button Width="100" Height="30"  Command="{Binding OK}" Grid.Row="2">Подтвердить</Button>
         </StackPanel>
-        <Button Command="{Binding Can}" Grid.Row="1" >Отказать</Button>
-        <Button Command="{Binding OK}" Grid.Row="2">Подтвердить</Button>
+       
     </Grid>
 </Page>

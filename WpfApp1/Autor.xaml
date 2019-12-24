@@ -5,14 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Autor" Height="450" Width="800">
+        Title="Autor" >
     <Grid >
-
-        <Label  Content="Логин"   HorizontalAlignment="Center" VerticalAlignment="Center" Margin="56,10,56,129" Height="30" Width="80"/>
-        <TextBox Name="login"  HorizontalAlignment="Center" VerticalAlignment="Center"  Height="30" Width="80" Margin="56,40,56,99"/>
-        <Label  Content="Пароль"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="80" Margin="56,75,56,64"/>
-        <TextBox  HorizontalAlignment="Center" VerticalAlignment="Center"  Height="30" Width="80" Margin="56,105,56,34" />
-        <Button Content="Войти" HorizontalAlignment="Center" Margin="56,139,56,10" VerticalAlignment="Center" Width="80"/>
-
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label  Content="Логин"     Height="30" Width="80"/>
+            <TextBox Text="{Binding Login}" Name="login"  HorizontalAlignment="Center" VerticalAlignment="Center"  Height="30" Width="120" />
+            <Label  Content="Пароль"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="80" />
+            <PasswordBox   x:Name="pas"  HorizontalAlignment="Center" VerticalAlignment="Center"  Height="30" Width="120"  />
+            <ComboBox ItemsSource="{Binding Vibor}" SelectedItem="{Binding SelectVibor}" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="120" Height="30"/>
+            <Button Command="{Binding OK}" Content="Войти" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120"/>
+           
+        </StackPanel>
     </Grid>
 </Window>

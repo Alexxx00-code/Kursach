@@ -27,6 +27,9 @@
                 <DataGridTextColumn Header="Дата"  Binding="{Binding Date}"/>
                 <DataGridTextColumn Header="Тип операции"  Binding="{Binding Tip_operacii.Name}"/>
                 <DataGridTextColumn Header="Сумма"  Binding="{Binding Sum_In}"/>
+               
+                <DataGridTextColumn Header="Счёт от куда произвелась операция"  Binding="{Binding Schet1.Nschet}" />
+                <DataGridTextColumn Header="Счёт куда произвелась операция"  Binding="{Binding Schet.Nschet}" />
             </DataGrid.Columns>
 
         </DataGrid>

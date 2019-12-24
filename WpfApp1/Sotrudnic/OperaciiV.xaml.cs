@@ -10,18 +10,27 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Model;
 
-namespace WpfApp1
+namespace WpfApp1.Sotrudnic
 {
     /// <summary>
-    /// Логика взаимодействия для Info_Client.xaml
+    /// Логика взаимодействия для OperaciiV.xaml
     /// </summary>
-    public partial class Info_Client : Window
+    public partial class OperaciiV : Page
     {
-        public Info_Client()
+        OperaciiVM operacii;
+        public OperaciiV(int id, SotrudnicWindowVM window, Bank bank)
         {
             InitializeComponent();
+            operacii = new OperaciiVM(id,window,bank);
+            DataContext = operacii;
+        }
+        public void UPD()
+        {
+            operacii.UPD();
         }
     }
 }

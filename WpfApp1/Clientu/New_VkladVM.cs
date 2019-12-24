@@ -28,7 +28,7 @@ namespace WpfApp1.Clientu
             ID = id;
             user = bd.Client.Find(id);
             this.window = window;            
-            Program = new ObservableCollection<Prog>(bd.Prog.Where(i=>i.TipID==2));
+            Program = new ObservableCollection<Prog>(bd.Prog.Where(i=>i.TipID==1));
             Valutes = new ObservableCollection<Valute>(bd.Valute);
             Schets = new ObservableCollection<Schet>(user.Schet.Where(i => (i.Prog == null) && (i.Status == true)));
         }

@@ -131,7 +131,7 @@
     <Compile Include="Autor.xaml.cs">
       <DependentUpon>Autor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
+    <Compile Include="AutorVM.cs" />
     <Compile Include="Clientu\KreditV.xaml.cs">
       <DependentUpon>KreditV.xaml</DependentUpon>
     </Compile>
@@ -184,6 +184,10 @@
     </Compile>
     <Compile Include="Sotrudnic\NewClientVM.cs" />
     <Compile Include="Sotrudnic\New_ProgVM.cs" />
+    <Compile Include="Sotrudnic\OperaciiV.xaml.cs">
+      <DependentUpon>OperaciiV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sotrudnic\OperaciiVM.cs" />
     <Compile Include="Sotrudnic\Operacii_na_potvVM.cs" />
     <Compile Include="Sotrudnic\Operacii_na_potvV.xaml.cs">
       <DependentUpon>Operacii_na_potvV.xaml</DependentUpon>
@@ -207,9 +211,6 @@
     <Compile Include="TransferManedger.cs" />
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Sotrudnic\Info_Client.xaml.cs">
-      <DependentUpon>Info_Client.xaml</DependentUpon>
     </Compile>
     <Compile Include="Clientu\New_Schet.xaml.cs">
       <DependentUpon>New_Schet.xaml</DependentUpon>
@@ -262,6 +263,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Sotrudnic\OperaciiV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Sotrudnic\Operacii_na_potvV.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -283,10 +288,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Window1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Sotrudnic\Info_Client.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -19,11 +19,13 @@ namespace WpfApp1
             schet.ClientID = client.ID;
             schet.Status = true;
             bank.Schet.Add(schet);
+            bank.SaveChanges();
             Operacii operacii = new Operacii();
+            bank.SaveChanges();
             operacii.ID = 1;
             operacii.Date = DateTime.Now;
             operacii.StatusID = bank.Status.Where(i => i.Name == "Выполнена").FirstOrDefault().ID;
-            operacii.Schet = schet;
+            operacii.OutID = schet.Nschet;
             operacii.Tip_operaziiID = bank.Tip_operacii.Where(i => i.Name == "Создание счёта").FirstOrDefault().ID;
             bank.Operacii.Add(operacii);
             bank.SaveChanges();
@@ -39,11 +41,12 @@ namespace WpfApp1
             In.ClientID = client.ID;
             In.Status = true;
             bank.Schet.Add(In);
+            bank.SaveChanges();
             Operacii operacii = new Operacii();
             operacii.ID = 1;
             operacii.Date = DateTime.Now;
             operacii.StatusID = bank.Status.Where(i => i.Name == "Выполнена").FirstOrDefault().ID;
-            
+            operacii.OutID = Out.Nschet;
             operacii.InID = In.Nschet;
             operacii.Tip_operaziiID = bank.Tip_operacii.Where(i => i.Name == "Создание вклада").FirstOrDefault().ID;
             if (In.ValuteID == Out.ValuteID)
@@ -202,15 +205,17 @@ namespace WpfApp1
         static public void Create_Kredit(Schet schet, Prog prog, decimal Sum, Bank bank, Valute valute,int client)
         {
             bank.Prog.Add(prog);
+            bank.SaveChanges();
             Schet schet1 = new Schet();
             schet1.ClientID = client;
             schet1.Nschet = 1;
             schet1.Data_sozd = DateTime.Now;
             schet1.ProgID = prog.ID;
             schet1.Sum = 0;
-            schet1.Status = true;
+            schet1.Status = false;
             schet1.ValuteID = valute.ID;
             bank.Schet.Add(schet1);
+            bank.SaveChanges();
             Operacii operacii = new Operacii();
             operacii.ID = 1;
             operacii.Date = DateTime.Now;
@@ -235,6 +240,7 @@ namespace WpfApp1
             schet.ClientID = client.ID;
             schet.Status = true;
             bank.Schet.Add(schet);
+            bank.SaveChanges();
             Operacii operacii = new Operacii();
             
             operacii.ID = 1;
@@ -267,8 +273,9 @@ namespace WpfApp1
         {
             operacii.SotrudnicID = id;
             operacii.StatusID = bank.Status.Where(i => i.Name == "Выполнена").FirstOrDefault().ID;
-            operacii.Schet.Prog.Procent = proc;
-            perevod(operacii.Schet, operacii.Schet1, (decimal)operacii.Sum_Out, bank, operacii);
+            operacii.Schet1.Prog.Procent = proc;
+            operacii.Schet1.Status = true;
+            perevod(operacii.Schet1, operacii.Schet, (decimal)operacii.Sum_Out, bank, operacii);
             bank.SaveChanges();
         }
 

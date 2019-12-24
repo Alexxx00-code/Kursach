@@ -22,6 +22,7 @@ namespace WpfApp1
         public Autor()
         {
             InitializeComponent();
+            DataContext = new AutorVM(this);
         }
     }
 }

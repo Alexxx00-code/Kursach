@@ -11,20 +11,20 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="0.4*"></RowDefinition>
-            <RowDefinition Height="0.4*"></RowDefinition>
+           
         </Grid.RowDefinitions>
         
         <StackPanel TextElement.FontSize="15" Grid.Row="0"  HorizontalAlignment="Center">
             <TextBlock>Перевод в другой банк</TextBlock>
             <TextBlock>Номер счёта</TextBlock>
-            <TextBox IsReadOnly="True" Text="{Binding operacii.Vneshcniy_Nscheta}"></TextBox>
+            <TextBox IsReadOnly="True" Text="{Binding Vneshcniy_Nscheta}"></TextBox>
             <TextBlock>Сумма</TextBlock>
-            <TextBox IsReadOnly="True" Text="{Binding operacii.Sum_In}"></TextBox>
+            <TextBox IsReadOnly="True" Text="{Binding Sum_In}"></TextBox>
             <TextBlock>Валюта</TextBlock>
-            <TextBox IsReadOnly="True" Text="{Binding operacii.Schet1.Valute.Name}"></TextBox>
+            <TextBox IsReadOnly="True" Text="{Binding Name}"></TextBox>
+            <Button Margin="5" Width="100" Height="30" Command="{Binding Can}" Grid.Row="1" >Отказать</Button>
+            <Button Width="100" Height="30"  Command="{Binding OK}" Grid.Row="2">Подтвердить</Button>
         </StackPanel>
-        <Button Command="{Binding Can}" Grid.Row="1" >Отказать</Button>
-        <Button Command="{Binding OK}" Grid.Row="2">Подтвердить</Button>
+        
     </Grid>
 </Page>

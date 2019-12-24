@@ -43,6 +43,9 @@ namespace WpfApp1.Clientu
             set
             {
                 select_vnschet = value;
+                if (value == true)
+                    select_vnbank = false;
+                OnPropertyChanged("Select_vnbank");
                 OnPropertyChanged("Select_vnschet");
             }
         }
@@ -54,7 +57,10 @@ namespace WpfApp1.Clientu
             set
             {
                 select_vnbank = value;
+                if(value == true)
+                select_vnschet = false;
                 OnPropertyChanged("Select_vnbank");
+                OnPropertyChanged("Select_vnschet");
             }
         }
 
@@ -77,10 +83,15 @@ namespace WpfApp1.Clientu
             set
             {               
                 selectedOut = value;
+
+                if((value!=null) &&(value.Prog!=null))
                 if (value.Prog.Tip.Name == "Вклад")
                 {
                     SumOut = (decimal)value.Sum;
                 }
+                if ((SelectedOut != null) && (selectedIn != null) && (selectedOut.ValuteID != selectedIn.ValuteID))
+                    SumIn = Sum - Sum * (decimal)selectedIn.Valute.Otnoshenie_k_rub_pok / (decimal)selectedOut.Valute.Otnoshenie_k_rub_prod;
+
                 OnPropertyChanged("SelectedOut");             
             }
         }
@@ -91,9 +102,15 @@ namespace WpfApp1.Clientu
             get { return selectedIn; }
             set
             {
-                Select_vnschet = false;
-                Select_vnbank = false;
+                if (value != null)
+                {
+                    Select_vnschet = false;
+                    Select_vnbank = false;
+                }
                 selectedIn = value;
+                if ((SelectedOut != null) && (selectedIn != null) && (selectedOut.ValuteID != selectedIn.ValuteID))
+                    SumIn = Sum - Sum * (decimal)selectedIn.Valute.Otnoshenie_k_rub_pok / (decimal)selectedOut.Valute.Otnoshenie_k_rub_prod;
+
                 OnPropertyChanged("SelectedIn");
             }
         }
@@ -107,13 +124,13 @@ namespace WpfApp1.Clientu
                 try
                 {
                     Sum = value;
-                    if (SelectedOut.Prog.Tip.Name == "Вклад")   
+                    if ((SelectedOut!=null) &&(SelectedOut.Prog!=null) &&(SelectedOut.Prog.Tip.Name == "Вклад"))
                     {
                         Sum = (decimal)SelectedOut.Sum;
                     }
 
-                    if (selectedOut.ValuteID != selectedIn.ValuteID)
-                        SumIn = value * (decimal)selectedIn.Valute.Otnoshenie_k_rub_pok / (decimal)selectedOut.Valute.Otnoshenie_k_rub_prod-value ;
+                    if ((SelectedOut != null) && (selectedIn != null) && (selectedOut.ValuteID != selectedIn.ValuteID))
+                        SumIn =Sum- Sum * (decimal)selectedIn.Valute.Otnoshenie_k_rub_pok / (decimal)selectedOut.Valute.Otnoshenie_k_rub_prod ;
                     
                     OnPropertyChanged("SumOut");
                 }
@@ -144,17 +161,28 @@ namespace WpfApp1.Clientu
                     try
                     {
                         if (SelectedOut != null)
-                            if (SelectedOut.Sum - (SumOut + SumIn) >= 0)
+                            if (SelectedOut.Prog != null)
+                            if ((SelectedOut.Prog.Tip.Name == "Вклад"))
+                            {
+                                Select_vnschet = false;
+                                Select_vnbank = false;
+                            }
+                        if (SelectedOut != null)
+                            if ((SelectedOut.Sum - (SumOut + SumIn) >= 0)|| ((SelectedOut.Prog != null) && (SelectedOut.Prog.Tip.Name == "Вклад")))
                                 if ((select_vnschet==false)&&(select_vnbank==false))
                                 {
                                     if (SelectedIn != null)
                                     {
-                                        if (SelectedOut.Prog.Tip.Name == "Вклад")
+
+                                        if ((SelectedOut.Prog!=null) &&(SelectedOut.Prog.Tip.Name == "Вклад"))
                                         {
-                                            TransferManedger.Delete_Vklad(SelectedOut,SelectedIn,bd);
+                                            if ((SelectedIn.Prog == null)||((SelectedIn.Prog!=null) &&(SelectedIn.Prog.Tip.Name != "Кредит")))
+                                                TransferManedger.Delete_Vklad(SelectedOut,SelectedIn,bd);
+                                            else
+                                                MessageBox.Show("Выберете другой счёт зачисления");
                                         }
                                         else
-                                            if ((SelectedIn.Prog.Tip.Name == "Кредит")&&(SelectedIn.Sum+Sum>0))
+                                            if ((SelectedIn.Prog.Tip.Name == "Кредит")&&(SelectedIn.Sum+Sum+SumIn>0))
                                             {
                                             TransferManedger.Delete_Kredit(SelectedOut, SelectedIn, bd);
                                             }
@@ -176,7 +204,9 @@ namespace WpfApp1.Clientu
                                         }
                                         else
                                         {
-                                            TransferManedger.Perevod_vneshniy_Schet(SelectedOut, (int)schet_vibr, SumOut, bd);
+                                            int t =TransferManedger.Perevod_vneshniy_Schet(SelectedOut, (int)schet_vibr, SumOut, bd);
+                                            if(t==0)
+                                                MessageBox.Show("Такой счет не существует");
                                             UPD();
                                         }
                                     }
@@ -217,15 +247,20 @@ namespace WpfApp1.Clientu
         {
             schets_in.Clear();
             schets_out.Clear();
-            foreach (Schet schet in user.Schet)
+            foreach (Schet schet in user.Schet.Where(i => (i.Status == true) && ((i.Prog == null) || (i.Prog.Tip.Name == "Вклад"))))
             {
-                schets_in.Add(schet);
+                
                 schets_out.Add(schet);
+            }
+            foreach (Schet schet in user.Schet.Where(i => (i.Status == true) && ((i.Prog == null) || (i.Prog.Tip.Name == "Кредит"))))
+            {
+
+                schets_in.Add(schet);
             }
             SumIn = 0;
             SumOut = 0;
-            SelectedIn = null;
-            SelectedOut = null;
+            selectedIn = null;
+            selectedOut = null;
             Schet_vibr = null;
             Select_vnbank = false;
             Select_vnschet = false;

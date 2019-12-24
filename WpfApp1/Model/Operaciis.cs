@@ -37,5 +37,7 @@ namespace WpfApp1.Model
         public virtual Schet Schet1 { get; set; }
 
         public virtual Tip_operacii Tip_operacii { get; set; }
+
+   
     }
 }
