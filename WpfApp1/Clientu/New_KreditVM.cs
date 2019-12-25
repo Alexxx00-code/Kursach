@@ -131,6 +131,24 @@ namespace WpfApp1.Clientu
                 }
             }
         }
+        public RelayCommand Cansel
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    try
+                    {
+                        window.kredit();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                });
+            }
+
+        }
         public RelayCommand OK
         {
             get

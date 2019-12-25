@@ -39,18 +39,16 @@
                 <ColumnDefinition Width="Auto" ></ColumnDefinition>
                 <ColumnDefinition Width="0.05*" ></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Content="Открыть Счет" Grid.Column="2"   Grid.Row="1"  Command="{Binding New}" />
-            <Button Content="Перевести" Grid.Column="2"   Grid.Row="3"   />
-            <Button Content="Закрыть счет" Grid.Column="2"   Grid.Row="5"  Command="{Binding Del}" CommandParameter="{Binding SelectedSchet}" />
-            <Button Content="Информация о счете" Grid.Column="2"   Grid.Row="7"   />
+            <Button Height="20" Width="80" Content="Открыть Счет" Grid.Column="2"   Grid.Row="1"  Command="{Binding New}" />
+            <Button Height="20" Width="80" Content="Закрыть счет" Grid.Column="2"   Grid.Row="3"  Command="{Binding Del}" CommandParameter="{Binding SelectedSchet}" Margin="0,18,0,15" />
         </Grid>
         <DataGrid  Grid.Column="0"   Grid.Row="1"  AutoGenerateColumns="False"  ItemsSource="{Binding schets}"
                     
                  SelectedItem="{Binding Selected}" CanUserAddRows="False" IsReadOnly="True" >
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Header="№ счёта"  Binding="{Binding Nschet}" />
-                <DataGridTextColumn Width="*" Header="Дата создания"   Binding="{Binding Data_sozd, StringFormat=dd:MM:yyyy }"/>
-                <DataGridTextColumn Width="*" Header="Сумма"  Binding="{Binding Sum}"/>
+                <DataGridTextColumn Width="*" Header="Дата создания"   Binding="{Binding Data_sozd, StringFormat=dd.MM.yyyy }"/>
+                <DataGridTextColumn Width="*" Header="Сумма"  Binding="{Binding Sum,StringFormat={}{0:F2}}"/>
                 <DataGridTextColumn Width="*" Header="Валюта"  Binding="{Binding Valute.Name}"/>
 
             </DataGrid.Columns>

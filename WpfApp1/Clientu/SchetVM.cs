@@ -40,7 +40,7 @@ namespace WpfApp1.Clientu
                 {
                     try
                     {
-                        window.window.Page.Content = new New_Schet(ID, window,bd);
+                        window.window.Page.Content = new New_SchetV(ID, window,bd);
                     }
                     catch (Exception ex)
                     {
@@ -59,7 +59,7 @@ namespace WpfApp1.Clientu
                     try
                     {
                         int n=TransferManedger.Delete_Schet(Selected,bd);
-                        if(n==1)
+                        if(n>0)
                             schets.Remove(Selected);
                     }
                     catch (Exception ex)

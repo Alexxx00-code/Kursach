@@ -22,8 +22,8 @@
             <TextBox IsReadOnly="True" Text="{Binding Sum_In}"></TextBox>
             <TextBlock>Валюта</TextBlock>
             <TextBox IsReadOnly="True" Text="{Binding Name}"></TextBox>
-            <Button Margin="5" Width="100" Height="30" Command="{Binding Can}" Grid.Row="1" >Отказать</Button>
-            <Button Width="100" Height="30"  Command="{Binding OK}" Grid.Row="2">Подтвердить</Button>
+            <Button Margin="5" Width="100" Height="20" Command="{Binding Cans}" Grid.Row="1" >Отказать</Button>
+            <Button Width="100" Height="20"  Command="{Binding OK}" Grid.Row="2">Подтвердить</Button>
         </StackPanel>
         
     </Grid>

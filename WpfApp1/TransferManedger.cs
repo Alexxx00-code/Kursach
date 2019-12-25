@@ -265,8 +265,8 @@ namespace WpfApp1
         {
             operacii.SotrudnicID = id;
             operacii.StatusID = bank.Status.Where(i => i.Name == "Отказано в выполнении").FirstOrDefault().ID;
-            operacii.Schet.Sum += operacii.Sum_In;
-            bank.Client.Find(2).Schet.Where(i => i.ValuteID == operacii.Schet.ValuteID).FirstOrDefault().Sum -= operacii.Sum_Out;
+            operacii.Schet1.Sum += operacii.Sum_Out;
+            bank.Client.Find(2).Schet.Where(i => i.ValuteID == operacii.Schet1.ValuteID).FirstOrDefault().Sum -= operacii.Sum_In;
             bank.SaveChanges();
         }
         static public void Potv_kredita(int id, Operacii operacii, Bank bank,double proc)
@@ -283,7 +283,7 @@ namespace WpfApp1
         {
             operacii.SotrudnicID = id;
             operacii.StatusID = bank.Status.Where(i => i.Name == "Отказано в выполнении").FirstOrDefault().ID;
-            operacii.Schet.Status = false;
+            operacii.Schet1.Status = false;
             
             bank.SaveChanges();
         }
@@ -291,8 +291,8 @@ namespace WpfApp1
         {
             operacii.SotrudnicID = id;
             operacii.StatusID = bank.Status.Where(i => i.Name == "Выполнена").FirstOrDefault().ID;
-            perevod(operacii.Schet, operacii.Schet1, (decimal)operacii.Sum_Out, bank, operacii);
-            operacii.Schet.ProgID = null;
+            perevod(operacii.Schet1, operacii.Schet, (decimal)operacii.Sum_Out, bank, operacii);
+            operacii.Schet1.ProgID = null;
             bank.SaveChanges();
         }
         static public void Otkaz_vklada(int id, Operacii operacii, Bank bank)

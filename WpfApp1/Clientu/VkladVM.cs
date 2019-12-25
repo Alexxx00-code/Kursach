@@ -38,7 +38,7 @@ namespace WpfApp1.Clientu
                 {
                     try
                     {
-                        window.window.Page.Content = new New_vklad(ID, window,bd);
+                        window.window.Page.Content = new New_vkladV(ID, window,bd);
                     }
                     catch (Exception ex)
                     {

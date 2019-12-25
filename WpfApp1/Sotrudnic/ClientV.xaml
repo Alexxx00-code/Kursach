@@ -39,10 +39,9 @@
                 <ColumnDefinition Width="Auto" ></ColumnDefinition>
                 <ColumnDefinition Width="0.05*" ></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Content="Новый клиент" Grid.Column="2"   Grid.Row="1"  Command="{Binding New}" />
+            <Button Height="20" Width="80" Content="Новый клиент" Grid.Column="2"   Grid.Row="1"  Command="{Binding New}" Margin="0,0,0,25" />
 
-            <Button Content="Изменить клиента" Grid.Column="2"   Grid.Row="3"  Command="{Binding Change}" />
-            <Button Content="Информация о клиенте" Grid.Column="2"   Grid.Row="5"   />
+            <Button Height="20" Width="80" Content="Изменить клиента" Grid.Column="2"   Grid.Row="3"  Command="{Binding Change}" Margin="0,0,0,23" />
         </Grid>
         <DataGrid Grid.Column="0"   Grid.Row="1"  AutoGenerateColumns="False"  ItemsSource="{Binding clients}"    IsReadOnly="True"                 
                  SelectedItem="{Binding SelectedClient}" CanUserAddRows="False" >

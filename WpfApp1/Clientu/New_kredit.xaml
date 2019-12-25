@@ -30,16 +30,16 @@
             <ColumnDefinition Width="0.02*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Button Grid.Row="11" Content="Подтвердить" Command="{Binding OK}" Grid.Column="2" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="80"  />
-        <Button Grid.Row="11" Content="Отмена" Grid.Column="1" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="50"  />
+        <Button Grid.Row="11" Content="Отмена" Command="{Binding Cansel}" Grid.Column="1" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="50"  />
         <Label Content="Валюта" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
         <ComboBox Grid.Column="2"  HorizontalAlignment="Center" Width="150" Grid.Row="4" VerticalAlignment="Center"   ItemsSource="{Binding Valutes}" SelectedItem="{Binding SelectedValute}"  DisplayMemberPath="Name" Height="22"/>
         <StackPanel Grid.Row="5" Grid.Column="2" Grid.RowSpan="6"  VerticalAlignment="Center">
             <Label Content="Минимальная процентная ставка" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
             <TextBox IsReadOnly="True"  HorizontalAlignment="Center" Width="150" Grid.Column="1" TextAlignment="Center"  Grid.Row="2"  Text="{Binding Proc}" VerticalAlignment="Top"/>
             <Label Content="Сумма" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
-            <TextBox Grid.Column="2" TextAlignment="Center" HorizontalAlignment="Center" Width="150"  Grid.Row="4" TextWrapping="Wrap" Text="{Binding Sum,StringFormat={}{0:F3} }" VerticalAlignment="Top"/>
+            <TextBox Grid.Column="2" TextAlignment="Center" HorizontalAlignment="Center" Width="150"  Grid.Row="4" TextWrapping="Wrap" Text="{Binding Sum,StringFormat={}{0:F2} }" VerticalAlignment="Top"/>
             <Label Content="Сумма ежемесечной выплаты" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
-            <TextBox Grid.Column="2" TextAlignment="Center" HorizontalAlignment="Center" Width="150"  Grid.Row="6" TextWrapping="Wrap" Text="{Binding Sum_m,StringFormat={}{0:F3}}" VerticalAlignment="Top"/>
+            <TextBox Grid.Column="2" TextAlignment="Center" HorizontalAlignment="Center" Width="150"  Grid.Row="6" TextWrapping="Wrap" Text="{Binding Sum_m,StringFormat={}{0:F2}}" VerticalAlignment="Top"/>
         </StackPanel>
         <Label Content="Счет куда поступят деньги" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
 

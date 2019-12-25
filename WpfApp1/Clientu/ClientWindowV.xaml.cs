@@ -18,10 +18,10 @@ namespace WpfApp1
     /// <summary>
     /// Логика взаимодействия для ClientWindow.xaml
     /// </summary>
-    public partial class ClientWindow : Window
+    public partial class ClientWindowV : Window
     {
         int Client_ID;
-        public ClientWindow(int id)
+        public ClientWindowV(int id)
         {
             InitializeComponent();
             Client_ID = id;

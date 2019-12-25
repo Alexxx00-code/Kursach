@@ -47,7 +47,7 @@
                  SelectedItem="{Binding SelectedSchet}" CanUserAddRows="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№ счёта"  Binding="{Binding Nschet}" />
-                <DataGridTextColumn Header="Дата создания"  Binding="{Binding Data_sozd}"/>
+                <DataGridTextColumn Header="Дата создания"  Binding="{Binding Data_sozd, StringFormat=dd.MM.yyyy}"/>
                 <DataGridTextColumn Header="Сумма"  Binding="{Binding Sum}"/>
                 <DataGridTextColumn Header="Валюта"  Binding="{Binding Valute.Name}"/>
                 <DataGridTextColumn Header="Программа"  Binding="{Binding Program.Name}"/>

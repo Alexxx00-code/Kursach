@@ -20,9 +20,9 @@
                 <DataGridTextColumn Header="Номер паспорта"  Binding="{Binding Schet1.Client.Npasporta}" />
                 <DataGridTextColumn Header="Серия"  Binding="{Binding Schet1.Client.Serpasporta}" />
                 <DataGridTextColumn Header="Тип операции"  Binding="{Binding Tip_operacii.Name}" />
-                <DataGridTextColumn Header="Cумма"  Binding="{Binding Sum_In}" />
+                <DataGridTextColumn Header="Cумма"  Binding="{Binding Sum_In,StringFormat={}{0:F2}}" />
                 <DataGridTextColumn Header="Статус"  Binding="{Binding Status.Name}" />
-                <DataGridTextColumn Header="Дата"  Binding="{Binding Date}" />
+                <DataGridTextColumn Header="Дата"  Binding="{Binding Date, StringFormat=dd:MM:yyyy}" />
                 <DataGridTextColumn Header="Счёт от куда произвелась операция"  Binding="{Binding Schet1.Nschet}" />
                 <DataGridTextColumn Header="Счёт куда произвелась операция"  Binding="{Binding Schet.Nschet}" />
                 

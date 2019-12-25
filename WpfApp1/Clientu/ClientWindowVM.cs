@@ -12,14 +12,14 @@ namespace WpfApp1
     public class ClientWindowVM 
     {
         int ID;
-        public ClientWindow window;
+        public ClientWindowV window;
         Bank bd;
         SchetV schetV;
         KreditV kreditV;
         OperaciiV operaciiV;
         VkladV vkladV;
-        Perevod perevodV;
-        public ClientWindowVM(int id, ClientWindow window )
+        PerevodV perevodV;
+        public ClientWindowVM(int id, ClientWindowV window )
         {
             ID = id;
             this.window = window;
@@ -145,7 +145,7 @@ namespace WpfApp1
         public void perevod()
         {
             if (perevodV == null)
-                perevodV = new Perevod(ID, this, bd);
+                perevodV = new PerevodV(ID, this, bd);
             perevodV.UPD();
             window.Page.Content = perevodV;
         }

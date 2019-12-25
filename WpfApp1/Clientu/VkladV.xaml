@@ -39,16 +39,14 @@
                 <ColumnDefinition Width="Auto" ></ColumnDefinition>
                 <ColumnDefinition Width="0.05*" ></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Content="Открыть вклад" Grid.Column="2"   Grid.Row="1"  Command="{Binding New}" />
-
-            <Button Content="Закрыть вклад" Grid.Column="2"   Grid.Row="3"   />
+            <Button Content="Открыть вклад" Grid.Column="2"  Height="30" Grid.Row="1"  Command="{Binding New}" />
         </Grid>
         <DataGrid Grid.Column="0"   Grid.Row="1"  AutoGenerateColumns="False"  ItemsSource="{Binding vklads}"    IsReadOnly="True"                 
                  SelectedItem="{Binding SelectedSchet}" CanUserAddRows="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№ счёта"  Binding="{Binding Nschet}" />
-                <DataGridTextColumn Header="Дата создания"  Binding="{Binding Data_sozd}"/>
-                <DataGridTextColumn Header="Сумма"  Binding="{Binding Sum}"/>
+                <DataGridTextColumn Header="Дата создания"  Binding="{Binding Data_sozd, StringFormat=dd.MM.yyyy}"/>
+                <DataGridTextColumn Header="Сумма"  Binding="{Binding Sum,StringFormat={}{0:F2}}"/>
                 <DataGridTextColumn Header="Валюта"  Binding="{Binding Valute.Name}"/>
                 <DataGridTextColumn Header="Программа"  Binding="{Binding Prog.Name}"/>
                 <DataGridTextColumn Header="Процент"  Binding="{Binding Prog.Procent}"/>

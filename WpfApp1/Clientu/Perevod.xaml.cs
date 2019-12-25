@@ -18,22 +18,17 @@ namespace WpfApp1.Clientu
     /// <summary>
     /// Логика взаимодействия для Perevod.xaml
     /// </summary>
-    public partial class Perevod : Page
+    public partial class PerevodV : Page
     {
         PerevodVM perevod;
-        public Perevod(int id, ClientWindowVM window,Bank bank)
+        public PerevodV(int id, ClientWindowVM window,Bank bank)
         {
             InitializeComponent();
             perevod = new PerevodVM(id, window, bank);
             DataContext = perevod;
 
         }
-        public Perevod(int id, ClientWindowVM window,Schet schet, Bank bank)
-        {
-            InitializeComponent();
-            perevod = new PerevodVM(id, window, schet, bank);
-            DataContext = perevod;
-        }
+        
         public void UPD()
         {
             perevod.UPD();

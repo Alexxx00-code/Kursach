@@ -17,9 +17,9 @@ namespace WpfApp1.Clientu
     /// <summary>
     /// Логика взаимодействия для New_vklad.xaml
     /// </summary>
-    public partial class New_vklad : Page
+    public partial class New_vkladV : Page
     {
-        public New_vklad(int id, ClientWindowVM window,Bank bank)
+        public New_vkladV(int id, ClientWindowVM window,Bank bank)
         {
             InitializeComponent();
             DataContext = new New_VkladVM(id, window,bank);

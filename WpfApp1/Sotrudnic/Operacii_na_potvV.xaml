@@ -24,9 +24,9 @@
                  SelectedItem="{Binding SelectedOperacii}" CanUserAddRows="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ФИО"  Binding="{Binding Schet.Client.FIO}" />
-                <DataGridTextColumn Header="Дата"  Binding="{Binding Date}"/>
+                <DataGridTextColumn Header="Дата"  Binding="{Binding Date, StringFormat=dd:MM:yyyy}"/>
                 <DataGridTextColumn Header="Тип операции"  Binding="{Binding Tip_operacii.Name}"/>
-                <DataGridTextColumn Header="Сумма"  Binding="{Binding Sum_In}"/>
+                <DataGridTextColumn Header="Сумма"  Binding="{Binding Sum_In,StringFormat={}{0:F2}}"/>
                
                 <DataGridTextColumn Header="Счёт от куда произвелась операция"  Binding="{Binding Schet1.Nschet}" />
                 <DataGridTextColumn Header="Счёт куда произвелась операция"  Binding="{Binding Schet.Nschet}" />

@@ -18,9 +18,9 @@ namespace WpfApp1.Clientu
     /// <summary>
     /// Логика взаимодействия для New_Schet.xaml
     /// </summary>
-    public partial class New_Schet : Page
+    public partial class New_SchetV : Page
     {
-        public New_Schet(int id,ClientWindowVM window,Bank bank)
+        public New_SchetV(int id,ClientWindowVM window,Bank bank)
         {
             InitializeComponent();
             DataContext = new New_SchetVM(id,window,bank);

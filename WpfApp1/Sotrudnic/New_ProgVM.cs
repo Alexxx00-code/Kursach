@@ -41,18 +41,19 @@ namespace WpfApp1.Sotrudnic
                 {
                     try
                     {
-                        if (add)
-                        {
-                            prog.TipID = bank.Tip.Where(i => i.Name == "Вклад").FirstOrDefault().ID;
-                            bank.Prog.Add(prog);
-                            bank.SaveChanges();
-                            windowVM.program();
-                        }
-                        else
-                        {
-                            bank.SaveChanges();
-                            windowVM.program();
-                        }
+                        if (dlitel_day_min<dlitel_day_max)
+                            if (add)
+                            {
+                                prog.TipID = bank.Tip.Where(i => i.Name == "Вклад").FirstOrDefault().ID;
+                                bank.Prog.Add(prog);
+                                bank.SaveChanges();
+                                windowVM.program();
+                            }
+                            else
+                            {
+                                bank.SaveChanges();
+                                windowVM.program();
+                            }
 
                     }
                     catch (Exception ex)

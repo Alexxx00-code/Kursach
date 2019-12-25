@@ -30,16 +30,16 @@
                 <RowDefinition Height="0.2*"></RowDefinition>
             </Grid.RowDefinitions>
             <Label Content="Название" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
-            <TextBox Grid.Column="1" TextAlignment="Center"  Grid.Row="2"  Text="{Binding Name}" VerticalAlignment="Top" />
+            <TextBox Height="20" Width="170" Grid.Column="1" TextAlignment="Center"  Grid.Row="2"  Text="{Binding Name}" VerticalAlignment="Top" />
             <Label Content="% Ставка" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom" />
-            <TextBox Grid.Column="1" TextAlignment="Center"  Grid.Row="4"  Text="{Binding Procent}" VerticalAlignment="Top" />
-            <Label Content="Минимальная длительность" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom" />
-            <TextBox Grid.Column="1" TextAlignment="Center"  Grid.Row="6"  Text="{Binding dlitel_day_min}" VerticalAlignment="Top" />
+            <TextBox Height="20" Width="170" Grid.Column="1" TextAlignment="Center"  Grid.Row="4"  Text="{Binding Procent}" VerticalAlignment="Top" />
+            <Label Content="Минимальная длительность" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Margin="2,0,0,0" Width="167" />
+            <TextBox Height="20" Width="170" Grid.Column="1" TextAlignment="Center"  Grid.Row="6"  Text="{Binding dlitel_day_min}" VerticalAlignment="Top" />
             <Label Content="Максимальная длительность" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom" />
-            <TextBox Grid.Column="1" TextAlignment="Center"  Grid.Row="8"  Text="{Binding dlitel_day_max}" VerticalAlignment="Top" />
+            <TextBox Height="20" Width="170" Grid.Column="1" TextAlignment="Center"  Grid.Row="8"  Text="{Binding dlitel_day_max}" VerticalAlignment="Top" />
             <Label Content="Минимальная сумма" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom" />
-            <TextBox Grid.Column="1" TextAlignment="Center"  Grid.Row="10"  Text="{Binding min_Sum}" VerticalAlignment="Top" />
-            <Button Content="ОК" Grid.Column="1" HorizontalAlignment="Center" Command="{Binding OK}" Grid.Row="11" VerticalAlignment="Center" Width="75"/>
+            <TextBox Height="20" Width="170" Grid.Column="1" TextAlignment="Center"  Grid.Row="10"  Text="{Binding min_Sum}" VerticalAlignment="Top" />
+            <Button Height="20" Content="ОК" Grid.Column="1" HorizontalAlignment="Center" Command="{Binding OK}" Grid.Row="11" VerticalAlignment="Center" Width="75"/>
 
         </Grid>
     </Grid>

@@ -38,7 +38,7 @@ namespace WpfApp1.Clientu
                 {
                     try
                     {
-                        window.window.Page.Content = new New_kredit(ID, window, bd);
+                        window.window.Page.Content = new New_kreditV(ID, window, bd);
                     }
                     catch (Exception ex)
                     {

@@ -39,9 +39,9 @@
                 <ColumnDefinition Width="Auto" ></ColumnDefinition>
                 <ColumnDefinition Width="0.05*" ></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Content="Новая программа" Grid.Column="2"   Grid.Row="1"  Command="{Binding New}" />
+            <Button Content="Новая программа" Grid.Column="2" Height="20" Width="130" Grid.Row="1"  Command="{Binding New}" Margin="0,0,0,23" />
 
-            <Button Content="Изменить программу" Grid.Column="2"   Grid.Row="3"  Command="{Binding Change}" />
+            <Button Content="Изменить программу" Grid.Column="2" Height="20" Width="130" Grid.Row="3"  Command="{Binding Change}" Margin="0,0,0,24" />
            
         </Grid>
         <DataGrid Grid.Column="0"   Grid.Row="1"  AutoGenerateColumns="False"  ItemsSource="{Binding progs}"    IsReadOnly="True"                 

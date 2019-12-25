@@ -63,24 +63,43 @@ namespace WpfApp1.Clientu
             }
         }
         decimal sum = 0;
+        decimal sum1 = 0;
         public decimal Sum
         {
-            get { return sum; }
+            get { return sum1; }
             set
             {
                 try
                 {
                     sum = value;
                     if (SelectedSchet.ValuteID != SelectedValute.ID)
-                        sum = value - value * (decimal)SelectedSchet.Valute.Otnoshenie_k_rub_prod / (decimal)SelectedValute.Otnoshenie_k_rub_pok;
+                        sum1 = value * (decimal)SelectedSchet.Valute.Otnoshenie_k_rub_prod / (decimal)SelectedValute.Otnoshenie_k_rub_pok;
 
-                    OnPropertyChanged("SumOut");
+                    OnPropertyChanged("Sum");
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+        public RelayCommand Cansel
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    try
+                    {
+                        window.vklad();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                });
+            }
+
         }
         public RelayCommand OK
         {

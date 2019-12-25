@@ -32,17 +32,17 @@
         </Grid.ColumnDefinitions>
         
         <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">ФИО</TextBlock>
-        <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding FIO}"/>
+        <TextBox Width="170" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding FIO}"/>
         <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">№ паспорта</TextBlock>
-        <TextBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Nom}"/>
+        <TextBox Width="170" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Nom}"/>
         <TextBlock Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">Серия</TextBlock>
-        <TextBox Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Seriy}"/>
+        <TextBox Width="170" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Seriy}"/>
         <TextBlock Grid.Row="8" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">Логин</TextBlock>
-        <TextBox Grid.Row="9" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Login}"/>
+        <TextBox Width="170" Grid.Row="9" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Login}"/>
         <TextBlock Grid.Row="10" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">Пароль</TextBlock>
-        <TextBox Grid.Row="11" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Pasworld}"/>
+        <TextBox Width="170" Grid.Row="11" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Pasworld}"/>
         <TextBlock Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">Дата рождения</TextBlock>
-        <DatePicker Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" SelectedDate="{Binding Date}"/>
-        <Button Grid.Row="12" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"   Command="{Binding OK}">OK</Button>
+        <DatePicker Width="170" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" SelectedDate="{Binding Date}"/>
+        <Button Grid.Row="12" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"   Command="{Binding OK}">Подтвердить</Button>
     </Grid>
 </Page>

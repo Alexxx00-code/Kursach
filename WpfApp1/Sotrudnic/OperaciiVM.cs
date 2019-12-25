@@ -103,7 +103,7 @@ namespace WpfApp1.Sotrudnic
                         ((fio.Length==0)||(fio==i.Schet1.Client.FIO))&&
                         ((seriy.Length == 0) || (seriy == i.Schet1.Client.Serpasporta.ToString())) &&
                         ((nomer.Length == 0) || (nomer == i.Schet1.Client.Npasporta.ToString())) 
-                        &&(i.Date<dod)&&(i.Date>ot)
+                        &&(i.Date<=dod.AddDays(1))&&(i.Date>=ot)
                         )))
                         {
                             operaciis.Add(operacii);

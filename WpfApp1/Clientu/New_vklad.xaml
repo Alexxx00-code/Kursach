@@ -30,9 +30,9 @@
             <ColumnDefinition Width="0.2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Button Grid.Row="7" Content="Подтвердить" Grid.Column="2" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="76" Command="{Binding OK}" Margin="138,11,133,6"  />
-        <Button Grid.Row="7" Content="Отмена" Grid.Column="1" HorizontalAlignment="Center"   VerticalAlignment="Center" Margin="33,11,33,6"   />
+        <Button Grid.Row="7" Content="Отмена" Grid.Column="1" HorizontalAlignment="Center"   VerticalAlignment="Center" Margin="33,11,33,6"  Command="{Binding Cansel}" />
         <Label Content="Валюта" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Margin="63,0,77,7" Width="60" />
-        <ComboBox  Grid.Column="1"  Grid.Row="4" VerticalAlignment="Center" Width="150"  ItemsSource="{Binding Valutes}" SelectedItem="{Binding SelectedValute}"  DisplayMemberPath="Name" Height="25" Margin="0,10"/>
+        <ComboBox  Grid.Column="1"  Grid.Row="4" VerticalAlignment="Center" Width="150"  ItemsSource="{Binding Valutes}" SelectedItem="{Binding SelectedValute}"  DisplayMemberPath="Name" Height="22" Margin="76,6,75,10"/>
         <Label Content="Программа" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Height="26" Margin="20,0,10,0" Width="82"/>
         <DataGrid Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" ItemsSource="{Binding Program}"    IsReadOnly="True"                 
                AutoGenerateColumns="False"  SelectedItem="{Binding SelectedProgram}" CanUserAddRows="False"  >
@@ -54,7 +54,7 @@
                 <DataGridTextColumn Header="Дата создания"  Binding="{Binding Data_sozd}"/>
                 <DataGridTextColumn Header="Сумма"  Binding="{Binding Sum}"/>
                 <DataGridTextColumn Header="Валюта"  Binding="{Binding Valute.Name}"/>
-                
+
 
             </DataGrid.Columns>
 

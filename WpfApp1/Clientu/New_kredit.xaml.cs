@@ -18,10 +18,10 @@ namespace WpfApp1.Clientu
     /// <summary>
     /// Логика взаимодействия для New_kredit.xaml
     /// </summary>
-    public partial class New_kredit : Page
+    public partial class New_kreditV : Page
     {
      
-        public New_kredit(int id, ClientWindowVM window, Bank bank)
+        public New_kreditV(int id, ClientWindowVM window, Bank bank)
         {
             InitializeComponent();
             DataContext = new New_KreditVM(id, window, bank);

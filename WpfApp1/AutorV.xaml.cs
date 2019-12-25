@@ -15,14 +15,14 @@ using System.Windows.Shapes;
 namespace WpfApp1
 {
     /// <summary>
-    /// Логика взаимодействия для SotrudnicWindow.xaml
+    /// Логика взаимодействия для Autor.xaml
     /// </summary>
-    public partial class SotrudnicWindow : Window
+    public partial class AutorV : Window
     {
-        public SotrudnicWindow(int id)
+        public AutorV()
         {
             InitializeComponent();
-            DataContext = new SotrudnicWindowVM(id,this);
+            DataContext = new AutorVM(this);
         }
     }
 }

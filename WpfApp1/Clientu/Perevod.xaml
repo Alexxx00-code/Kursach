@@ -16,9 +16,10 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="6*" ></RowDefinition>
             <RowDefinition Height="56*"></RowDefinition>
-            <RowDefinition Height="156*" ></RowDefinition>
+            <RowDefinition Height="45" ></RowDefinition>
+            <RowDefinition Height="45" ></RowDefinition>
             <RowDefinition Height="56*" ></RowDefinition>
-            <RowDefinition Height="56*" ></RowDefinition>
+            <RowDefinition Height="56*"/>
             <RowDefinition Height="56*"/>
             <RowDefinition Height="56*"/>
             <RowDefinition Height="56*" ></RowDefinition>
@@ -27,45 +28,45 @@
             <RowDefinition Height="5*"></RowDefinition>
         </Grid.RowDefinitions>
         <Label Content="Счет от куда перевести деньги" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom" />
-        <CheckBox Grid.Column="1"   Grid.Row="3"  VerticalAlignment="Center"
-                  HorizontalAlignment="Center" IsChecked="{Binding Select_vnschet}"
+        <CheckBox Grid.Column="1"   Grid.Row="4"  VerticalAlignment="Center"
+                  HorizontalAlignment="Center" IsChecked="{Binding Select_vnschet}" Margin="153,5,141,6"
                   >Другой cчет</CheckBox>
-        <CheckBox Grid.Column="2"   Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center"
-                  HorizontalAlignment="Center"  IsChecked="{Binding Select_vnbank}"
+        <CheckBox Grid.Column="2"   Grid.Row="4" VerticalAlignment="Center"
+                  HorizontalAlignment="Center"  IsChecked="{Binding Select_vnbank}" Margin="162,6,140.5,5"
                   >Другой банк</CheckBox>
-        <TextBox Grid.Column="1"   Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" Grid.ColumnSpan="2" Text="{Binding Schet_vibr, UpdateSourceTrigger=LostFocus}"/>
+        <TextBox Width="300" Grid.Column="1"   Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" Grid.ColumnSpan="2" Text="{Binding Schet_vibr, UpdateSourceTrigger=LostFocus}"/>
         <Label Content="Счет куда перевести деньги" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Bottom" />
-        <Label Content="Сумма" Grid.ColumnSpan="2" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom" />
-        <TextBox Grid.Column="1" Grid.ColumnSpan="2"  Grid.Row="6" TextWrapping="Wrap"  VerticalAlignment="Top" TextAlignment="Center" Text="{Binding SumOut, UpdateSourceTrigger=LostFocus}" />
-        <Label Content="Комисия" Grid.ColumnSpan="2" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom" />
-        <TextBox Grid.Column="1" Grid.ColumnSpan="2"  Grid.Row="8" TextWrapping="Wrap"  VerticalAlignment="Top" TextAlignment="Center" Text="{Binding SumIn, UpdateSourceTrigger=Explicit}" />
-        <Button Grid.Row="9" Content="ОК" Grid.Column="2" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="50"   Command="{Binding OK}"   />
-        <Button Grid.Row="9" Content="Отмена" Grid.Column="1" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="50"  />
-        <DataGrid Grid.Column="1"   Grid.Row="2"  AutoGenerateColumns="False"  ItemsSource="{Binding schets_out}"    IsReadOnly="True"                 
+        <Label Content="Сумма" Grid.ColumnSpan="2" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom" />
+        <TextBox Width="300" Grid.Column="1" Grid.ColumnSpan="2"  Grid.Row="7" TextWrapping="Wrap"  VerticalAlignment="Top" TextAlignment="Center" Text="{Binding SumOut,StringFormat={}{0:F2}, UpdateSourceTrigger=LostFocus}" />
+        <Label Content="Комисия" Grid.ColumnSpan="2" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom" />
+        <TextBox IsReadOnly="True" Width="300" Grid.Column="1" Grid.ColumnSpan="2"  Grid.Row="9" TextWrapping="Wrap"  VerticalAlignment="Top" TextAlignment="Center" Text="{Binding SumIn,StringFormat={}{0:F2}, UpdateSourceTrigger=Explicit}" />
+        <Button Grid.Row="10" Content="ОК" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="50"   Command="{Binding OK}"   />
+        <DataGrid Grid.Column="1" Grid.RowSpan="2"  Grid.Row="2"  AutoGenerateColumns="False"  ItemsSource="{Binding schets_out}"    IsReadOnly="True"                 
                  SelectedItem="{Binding SelectedOut}" CanUserAddRows="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Тип"  Binding="{Binding Prog.Tip.Name}" />
                 <DataGridTextColumn Header="№ счёта"  Binding="{Binding Nschet}" />
                 <DataGridTextColumn Header="Дата создания"  Binding="{Binding Data_sozd}"/>
-                <DataGridTextColumn Header="Сумма"  Binding="{Binding Sum}"/>
+                <DataGridTextColumn Header="Сумма"  Binding="{Binding Sum,StringFormat={}{0:F2}}"/>
                 <DataGridTextColumn Header="Валюта"  Binding="{Binding Valute.Name}"/>
                 <DataGridTextColumn Header="Программа"  Binding="{Binding Prog.Name}"/>
 
             </DataGrid.Columns>
 
         </DataGrid>
-        <DataGrid Grid.Column="2"   Grid.Row="2"  AutoGenerateColumns="False"  ItemsSource="{Binding schets_in}"    IsReadOnly="True"                 
+        <DataGrid Grid.Column="2"   Grid.Row="2" Grid.RowSpan="2" AutoGenerateColumns="False"  ItemsSource="{Binding schets_in}"    IsReadOnly="True"                 
                  SelectedItem="{Binding SelectedIn}" CanUserAddRows="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Тип"  Binding="{Binding Prog.Tip.Name}" />
                 <DataGridTextColumn Header="№ счёта"  Binding="{Binding Nschet}" />
                 <DataGridTextColumn Header="Дата создания"  Binding="{Binding Data_sozd}"/>
-                <DataGridTextColumn Header="Сумма"  Binding="{Binding Sum}"/>
+                <DataGridTextColumn Header="Сумма"  Binding="{Binding Sum,StringFormat={}{0:F2}}"/>
                 <DataGridTextColumn Header="Валюта"  Binding="{Binding Valute.Name}"/>
                 <DataGridTextColumn Header="Программа"  Binding="{Binding Prog.Name}"/>
 
             </DataGrid.Columns>
 
         </DataGrid>
+        <Label Content="Номер внешнего счёта" Grid.ColumnSpan="2" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Margin="323,0" />
     </Grid>
 </Page>

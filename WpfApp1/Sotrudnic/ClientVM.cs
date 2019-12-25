@@ -18,7 +18,7 @@ namespace WpfApp1.Sotrudnic
         Bank bank;
         public ObservableCollection<Client> clients { get; set; }
         public Client selectedClient;
-        Client SelectedClient
+        public Client SelectedClient
         {
             get {
                 return selectedClient;
@@ -62,7 +62,8 @@ namespace WpfApp1.Sotrudnic
                 {
                     try
                     {
-                        window.window.Page.Content = new NewClientV(ID, window, bank, SelectedClient);
+                        if (selectedClient != null)
+                            window.window.Page.Content = new NewClientV(ID, window, bank, SelectedClient);
                     }
                     catch (Exception ex)
                     {

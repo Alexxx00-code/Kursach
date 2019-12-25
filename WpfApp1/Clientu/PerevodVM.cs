@@ -27,15 +27,7 @@ namespace WpfApp1.Clientu
             schets_in = new ObservableCollection<Schet>(user.Schet.Where(i => (i.Status == true) && ((i.Prog == null) || (i.Prog.Tip.Name == "Кредит"))));
             this.window = window;
         }
-        public PerevodVM(int id, ClientWindowVM window,Schet schet, Bank bank) 
-        {
-            bd = bank;
-            ID = id;
-            user = bd.Client.Find(id);
-            schets_out = new ObservableCollection<Schet>(user.Schet.Where(i => (i.Status == true) && ((i.Prog == null) || (i.Prog.Tip.Name == "Вклад"))));
-            schets_in = new ObservableCollection<Schet>(user.Schet.Where(i => (i.Status == true) && ((i.Prog == null) || (i.Prog.Tip.Name == "Кредит"))));
-            this.window = window;
-        }
+        
         bool select_vnschet = false;
         public bool Select_vnschet
         {
@@ -44,7 +36,10 @@ namespace WpfApp1.Clientu
             {
                 select_vnschet = value;
                 if (value == true)
+                {
                     select_vnbank = false;
+                    SelectedIn = null;
+                }
                 OnPropertyChanged("Select_vnbank");
                 OnPropertyChanged("Select_vnschet");
             }
@@ -57,8 +52,11 @@ namespace WpfApp1.Clientu
             set
             {
                 select_vnbank = value;
-                if(value == true)
-                select_vnschet = false;
+                if (value == true)
+                {
+                    select_vnschet = false;
+                    SelectedIn = null;
+                }
                 OnPropertyChanged("Select_vnbank");
                 OnPropertyChanged("Select_vnschet");
             }
@@ -71,7 +69,7 @@ namespace WpfApp1.Clientu
             set
             {
                 schet_vibr = value;                
-                SelectedIn = null;
+                
                 OnPropertyChanged("Schet_vibr");                
             }
         }

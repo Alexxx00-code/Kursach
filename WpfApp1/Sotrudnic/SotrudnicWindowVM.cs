@@ -9,7 +9,7 @@ using WpfApp1.Sotrudnic;
 
 namespace WpfApp1
 {
-    public class SotrudnicWindowVM 
+    public class SotrudnicWindowVM : Base
     {
         Bank bd;
         Model.Sotrudnic sotrudnic;
@@ -18,14 +18,81 @@ namespace WpfApp1
         Operacii_na_potvV Operacii;
         OperaciiV OperaciiV;
         ProgramV ProgramV;
-        public SotrudnicWindow window;
-        public SotrudnicWindowVM(int id, SotrudnicWindow window)
+        public SotrudnicWindowV window;
+        public SotrudnicWindowVM(int id, SotrudnicWindowV window)
         {
             bd = new Bank();
             ID = id;
             sotrudnic = bd.Sotrudnic.Find(ID);
             this.window = window;
         }
+        bool check0;
+        bool check1;
+        bool check2;
+        bool check3;
+
+        public bool Check0
+        {
+            get { return check0; }
+            set
+            {
+                check0 = true;
+                check1 = false;
+                check2 = false;
+                check3 = false;
+                OnPropertyChanged("Check0");
+                OnPropertyChanged("Check1");
+                OnPropertyChanged("Check2");
+                OnPropertyChanged("Check3");
+            }
+        }
+        public bool Check1
+        {
+            get { return check1; }
+            set
+            {
+                check0 = false;
+                check1 = true;
+                check2 = false;
+                check3 = false;
+                OnPropertyChanged("Check0");
+                OnPropertyChanged("Check1");
+                OnPropertyChanged("Check2");
+                OnPropertyChanged("Check3");
+            }
+        }
+        public bool Check2
+        {
+            get { return check2; }
+            set
+            {
+                check0 = false;
+                check1 = false;
+                check2 = true;
+                check3 = false;
+                OnPropertyChanged("Check0");
+                OnPropertyChanged("Check1");
+                OnPropertyChanged("Check2");
+                OnPropertyChanged("Check3");
+            }
+        }
+        public bool Check3
+        {
+            get { return check3; }
+            set
+            {
+                check0 = false;
+                check1 = false;
+                check2 = false;
+                check3 = true;
+                OnPropertyChanged("Check0");
+                OnPropertyChanged("Check1");
+                OnPropertyChanged("Check2");
+                OnPropertyChanged("Check3");
+            }
+        }
+
+
         public RelayCommand ClientViev
         {
             get

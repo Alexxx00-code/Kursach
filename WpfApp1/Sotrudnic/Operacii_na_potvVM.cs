@@ -32,7 +32,7 @@ namespace WpfApp1.Sotrudnic
                 {
                     if ((selectedOperacii != null)&& (selectedOperacii.Tip_operacii.Name == "Создание кредита"))
                         Page.Page.Content = new Rassmotreniy_kreditV(ID, selectedOperacii, bank, window);
-                    else
+                    else if(selectedOperacii != null)
                         Page.Page.Content = new Rassmotreniy_vkladV(ID, selectedOperacii, bank, window);
                 }
                 OnPropertyChanged("SelectedOperacii");

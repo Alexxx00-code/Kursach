@@ -28,8 +28,8 @@
             <TextBox IsReadOnly="True" Text="{Binding dlitel_day_min}"></TextBox>
             <TextBlock>Прошло дней</TextBlock>
             <TextBox IsReadOnly="True" Text="{Binding Pr}"></TextBox>
-            <Button Margin="5" Width="100" Height="30"  Command="{Binding Can}" Grid.Row="1" >Отказать</Button>
-            <Button Width="100" Height="30"  Command="{Binding OK}" Grid.Row="2">Подтвердить</Button>
+            <Button Margin="5" Width="100" Height="20"  Command="{Binding Cans}" Grid.Row="1" >Отказать</Button>
+            <Button Width="100" Height="20"  Command="{Binding OK}" Grid.Row="2">Подтвердить</Button>
         </StackPanel>
        
     </Grid>

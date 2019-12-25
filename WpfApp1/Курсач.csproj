@@ -128,8 +128,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Autor.xaml.cs">
-      <DependentUpon>Autor.xaml</DependentUpon>
+    <Compile Include="AutorV.xaml.cs">
+      <DependentUpon>AutorV.xaml</DependentUpon>
     </Compile>
     <Compile Include="AutorVM.cs" />
     <Compile Include="Clientu\KreditV.xaml.cs">
@@ -152,11 +152,11 @@
       <DependentUpon>VkladV.xaml</DependentUpon>
     </Compile>
     <Compile Include="Clientu\VkladVM.cs" />
-    <Compile Include="ClientWindow.xaml.cs">
-      <DependentUpon>ClientWindow.xaml</DependentUpon>
+    <Compile Include="Clientu\ClientWindowV.xaml.cs">
+      <DependentUpon>ClientWindowV.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controler.cs" />
-    <Compile Include="ClientWindowVM.cs" />
+    <Compile Include="Base.cs" />
+    <Compile Include="Clientu\ClientWindowVM.cs" />
     <Compile Include="Model\Bank.cs" />
     <Compile Include="Model\Client.cs" />
     <Compile Include="Model\C__MigrationHistory.cs" />
@@ -171,10 +171,10 @@
     <Compile Include="Model\Tip_operacii.cs" />
     <Compile Include="Model\Valutes.cs" />
     <Compile Include="RelayCommand.cs" />
-    <Compile Include="SotrudnicWindow.xaml.cs">
-      <DependentUpon>SotrudnicWindow.xaml</DependentUpon>
+    <Compile Include="Sotrudnic\SotrudnicWindowV.xaml.cs">
+      <DependentUpon>SotrudnicWindowV.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SotrudnicWindowVM.cs" />
+    <Compile Include="Sotrudnic\SotrudnicWindowVM.cs" />
     <Compile Include="Sotrudnic\ClientV.xaml.cs">
       <DependentUpon>ClientV.xaml</DependentUpon>
     </Compile>
@@ -209,9 +209,6 @@
     </Compile>
     <Compile Include="Sotrudnic\Rassmotreniy_vkladVM.cs" />
     <Compile Include="TransferManedger.cs" />
-    <Compile Include="Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Clientu\New_Schet.xaml.cs">
       <DependentUpon>New_Schet.xaml</DependentUpon>
     </Compile>
@@ -227,7 +224,7 @@
     <Compile Include="Clientu\New_vklad.xaml.cs">
       <DependentUpon>New_vklad.xaml</DependentUpon>
     </Compile>
-    <Page Include="Autor.xaml">
+    <Page Include="AutorV.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -247,11 +244,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ClientWindow.xaml">
+    <Page Include="Clientu\ClientWindowV.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SotrudnicWindow.xaml">
+    <Page Include="Sotrudnic\SotrudnicWindowV.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -284,10 +281,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Sotrudnic\Rassmotreniy_vkladV.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

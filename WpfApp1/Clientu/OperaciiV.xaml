@@ -13,9 +13,11 @@
         <DataGrid ItemsSource="{Binding operaciis}" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Тип операции"  Binding="{Binding Tip_operacii.Name}" />
-                <DataGridTextColumn Header="Cумма"  Binding="{Binding Sum_In}" />
+                <DataGridTextColumn Header="Cумма"  Binding="{Binding Sum_In,StringFormat={}{0:F2}}" />
                 <DataGridTextColumn Header="Счёт от куда произвелась операция"  Binding="{Binding Schet1.Nschet}" />
                 <DataGridTextColumn Header="Счёт куда произвелась операция"  Binding="{Binding Schet.Nschet}" />
+                <DataGridTextColumn Header="Дата"  Binding="{Binding Date, StringFormat=dd.MM.yyyy}" />
+                <DataGridTextColumn Header="Статус"  Binding="{Binding Status.Name}" />
             </DataGrid.Columns>
         </DataGrid>
 

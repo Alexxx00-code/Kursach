@@ -12,15 +12,15 @@ namespace WpfApp1
     class AutorVM
     {
         public ObservableCollection<string> Vibor { get; set; }
-        Autor win;
-        public AutorVM(Autor autor)
+        AutorV win;
+        public AutorVM(AutorV autor)
         {
             Vibor = new ObservableCollection<string>();
             Vibor.Add("Клиент");
             Vibor.Add("Сотрудник");
             win = autor;
         }
-
+       
         string login;
         public string Login
         {
@@ -33,9 +33,9 @@ namespace WpfApp1
                 login = value;
             }
         }
-        
-        
 
+
+        
         string selectVibor;
         public string SelectVibor
         {
@@ -66,8 +66,9 @@ namespace WpfApp1
                                 if(client!=null)
                                 {
                                     win.Hide();
-                                    ClientWindow window = new ClientWindow(client.ID);
+                                    ClientWindowV window = new ClientWindowV(client.ID);
                                     window.ShowDialog();
+                                    win.Close();
                                 }
                                 else
                                 {
@@ -80,7 +81,7 @@ namespace WpfApp1
                                 if (sotrudnic != null)
                                 {
                                     win.Hide();
-                                    SotrudnicWindow window = new SotrudnicWindow(sotrudnic.ID);
+                                    SotrudnicWindowV window = new SotrudnicWindowV(sotrudnic.ID);
                                     window.ShowDialog();
                                 }
                                 else

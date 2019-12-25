@@ -33,7 +33,7 @@ namespace WpfApp1.Sotrudnic
             ID = id;
             this.bank = bank;
             this.window = window;
-            progs = new ObservableCollection<Prog>(bank.Prog);
+            progs = new ObservableCollection<Prog>(bank.Prog.Where(i=>i.TipID==bank.Tip.Where(j=>j.Name=="Вклад").FirstOrDefault().ID));
         }
         public RelayCommand New
         {
@@ -61,6 +61,7 @@ namespace WpfApp1.Sotrudnic
                 {
                     try
                     {
+                        if(selectedProg!=null)
                         window.window.Page.Content = new New_ProgV(ID, window, bank, SelectedProgram);
                     }
                     catch (Exception ex)
@@ -74,7 +75,7 @@ namespace WpfApp1.Sotrudnic
         public void UPD()
         {
             progs.Clear();
-            foreach (Prog prog in bank.Prog)
+            foreach (Prog prog in bank.Prog.Where(i => i.TipID == bank.Tip.Where(j => j.Name == "Вклад").FirstOrDefault().ID))
             {
                 progs.Add(prog);
             }
